@@ -7,6 +7,7 @@ public class Player_interaction : MonoBehaviour
 
     Collider2D entity;
 
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Interactable"))
@@ -14,9 +15,6 @@ public class Player_interaction : MonoBehaviour
             entity = other;
             if (other.GetComponent<SpriteRenderer>().color != Color.green)
                 other.GetComponent<SpriteRenderer>().color = Color.red;
-
-
-
         }
     }
 
@@ -27,12 +25,21 @@ public class Player_interaction : MonoBehaviour
             other.GetComponent<SpriteRenderer>().color = Color.white;
         entity = null;
 
+
     }
 
     void Update()
     {
-        if(entity != null)
-        if (entity.GetComponent<SpriteRenderer>().color == Color.red && Input.GetKeyDown(KeyCode.Space))
-            entity.GetComponent<SpriteRenderer>().color = Color.green;
+        if (entity != null)
+            if (entity.GetComponent<SpriteRenderer>().color == Color.red && Input.GetKeyDown(KeyCode.Space))
+            {
+                entity.GetComponent<SpriteRenderer>().color = Color.green;
+            }
+            else if(entity.name == "lever" && Input.GetKeyDown(KeyCode.Space))
+                entity.GetComponent<Lever_behaviour>().isActivated = !entity.GetComponent<Lever_behaviour>().isActivated;
+
+
+
+
     }
 }
