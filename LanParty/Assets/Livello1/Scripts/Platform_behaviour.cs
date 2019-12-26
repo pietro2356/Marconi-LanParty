@@ -29,14 +29,65 @@ public class Platform_behaviour : MonoBehaviour
 
 
 
-        //if (animated)
-        //{
-        //    if (active)
-        //        transform.position = new Vector3(transform.position.x - (Xmovement * 0.01f), transform.position.y - (Ymovement * 0.01f));
-        //    else
-        //        transform.position = new Vector3(transform.position.x + (Xmovement * 0.1f), transform.position.y + (Ymovement * 0.1f));
-        //}
-        //else
+        if (animated)
+        {
+            if (active)
+            {
+                if (Xmovement != 0)
+                    if (originalPosition.x > newPosition.x)
+                    {
+                        if (transform.position.x < originalPosition.x)
+                            transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y);
+                    }
+                    else
+                    {
+                        if (transform.position.x > originalPosition.x)
+                            transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y);
+                    }
+
+                if (Ymovement != 0)
+                    if (originalPosition.y > newPosition.y)
+                    {
+                        if (transform.position.y < originalPosition.y)
+                            transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f);
+                    }
+                    else
+                    {
+                        if (transform.position.y > originalPosition.y)
+                            transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f);
+                    }
+            }
+            else
+            {
+                if (Xmovement != 0)
+                    if (originalPosition.x > newPosition.x)
+                    {
+                        if (transform.position.x > newPosition.x)
+                            transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y);
+                    }
+                    else
+                    {
+                        if (transform.position.x < newPosition.x)
+                            transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y);
+                    }
+
+                if (Ymovement != 0)
+                    if (originalPosition.y > newPosition.y)
+                    {
+                        if (transform.position.y > newPosition.y)
+                            transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f);
+                    }
+                    else
+                    {
+                        if (transform.position.y < newPosition.y)
+                            transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f);
+                    }
+            }
+
+            //y1>y2 => più in basso
+            //x1>x2 => più a destra
+        }
+        else
         {
             if (active)
                 transform.position = originalPosition;
@@ -44,4 +95,6 @@ public class Platform_behaviour : MonoBehaviour
                 transform.position = newPosition;
         }
     }
+
+
 }
