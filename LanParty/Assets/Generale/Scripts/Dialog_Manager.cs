@@ -11,17 +11,18 @@ public class Dialog_Manager : MonoBehaviour
 
     private GameObject popUp;
     private Text[] texts;
-
+    private Scene_behaviour sb;
     void Start()
     {
         sentences = new Queue<string>();
-
+        sb = FindObjectOfType<Scene_behaviour>();
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        popUp = Instantiate(preFab) as GameObject;
+        sb.stopped = true;
 
+        popUp = Instantiate(preFab) as GameObject;
 
 
         texts = popUp.GetComponentsInChildren<Text>();
@@ -59,5 +60,10 @@ public class Dialog_Manager : MonoBehaviour
         inDialog = false;
         Destroy(popUp);
         Debug.Log("conversation ended");
+    }
+
+    void Update()
+    {
+        sb.stopped = inDialog;
     }
 }

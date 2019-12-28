@@ -6,6 +6,8 @@ public class Player_movement : MonoBehaviour
 {
     Rigidbody2D rb;
     CircleCollider2D circleCollider;
+    Scene_behaviour sb;
+    Dialog_Manager dm;
     private float movement = 0f;
     [SerializeField] private LayerMask layer;
     private float originalGravity,
@@ -18,6 +20,7 @@ public class Player_movement : MonoBehaviour
         climbingSpeed = 0f;
 
     public bool onLadder = false;
+        
 
     private bool isGrounded()
     {
@@ -32,29 +35,33 @@ public class Player_movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         originalGravity = rb.gravityScale;
+        sb = FindObjectOfType<Scene_behaviour>();
+        dm = FindObjectOfType<Dialog_Manager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(movement * movementVelocity, rb.velocity.y);
-
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded())
-            rb.velocity = Vector2.up * jumpForce;
-
-
-        if (onLadder)
+        if(!sb.stopped && !dm.inDialog)
         {
-            rb.gravityScale = 0;
+            movement = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(movement * movementVelocity, rb.velocity.y);
 
-            climbingVelocity = climbingSpeed * Input.GetAxisRaw("Vertical");
+            if (Input.GetKeyDown(KeyCode.W) && isGrounded())
+                rb.velocity = Vector2.up * jumpForce;
 
-            rb.velocity = new Vector2(rb.velocity.x, climbingVelocity);
+
+            if (onLadder)
+            {
+                rb.gravityScale = 0;
+
+                climbingVelocity = climbingSpeed * Input.GetAxisRaw("Vertical");
+
+                rb.velocity = new Vector2(rb.velocity.x, climbingVelocity);
+            }
+            else
+                rb.gravityScale = originalGravity;
         }
-        else
-            rb.gravityScale = originalGravity;
-
     }
 
 }
