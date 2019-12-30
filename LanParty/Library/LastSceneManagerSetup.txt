@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Livello1/Scenes/Level 1 - factory.unity
+- path: Assets/Livello1/minigioco/Gioco_Tubi.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
