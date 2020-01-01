@@ -26,13 +26,33 @@ public class GesgtioneGriglia : MonoBehaviour
         set { celleGriglia = value; }
     }
 
-    byte[,] prova = new byte[,] {
-        { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } ,
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+    //LA MATRICE VA LETTA GIRATA DI 90° IN SENSO ANTI-ORARIO!
+    /*byte[,] prova = new byte[,] {
+        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } ,
+        { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 } ,
+        { 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 } ,
+        { 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 } ,
+        { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 } ,
+        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+    };*/
+
+    /* La matrice va girata di 90° in senso anti-orario!
+     * O la si tiene così altrimenti bisogna creare un metodo per girarla.s
+     */
+    byte[,] gameBoard = new byte[,]
+    {
+        { 1, 1, 1, 1, 1, 1 },
+        { 1, 1, 0, 0, 0, 0 },
+        { 1, 0, 1, 0, 0, 0 },
+        { 1, 0, 0, 1, 0, 0 },
+        { 1, 0, 0, 0, 1, 0 },
+        { 1, 0, 0, 0, 0, 1 },
+        { 1, 0, 0, 0, 1, 0 },
+        { 1, 0, 0, 1, 0, 0 },
+        { 1, 0, 1, 0, 0, 0 },
+        { 1, 1, 0, 0, 0, 0 },
+        { 1, 0, 0, 0, 0, 0 },
+    };
 
     void Awake()
     {
@@ -43,8 +63,23 @@ public class GesgtioneGriglia : MonoBehaviour
 
         SetupGriglia();
 
-        GeneraPezzi(prova);
+        GeneraPezzi(gameBoard);
     }
+
+    #region NonServeAdUnCazzo
+    void Test(int x, int y, byte[,] matrix)
+    {
+        InfoCelle cellaDaTrovare = GetInfoCelle((byte)x, (byte)y);
+        Vector3 puntoSpawn = cellaDaTrovare.posCella;
+
+        GameObject pezzo = Instantiate(pezzi[matrix[x, y]], new Vector3(puntoSpawn.x, puntoSpawn.y, g_transform.position.z - 1), Quaternion.identity);
+        pezziGenerati.Add(pezzo);
+
+        cellaDaTrovare.pezzoInterno = pezzo;
+
+        cellaDaTrovare.tipoPezzo = (tipoPezzo)matrix[x, y];
+    }
+    # endregion NonServeAdUnCazzo
 
     void SetupGriglia()
     {
@@ -69,7 +104,7 @@ public class GesgtioneGriglia : MonoBehaviour
             {
                 byte orizzontale = (byte)i;
                 byte verticale = (byte)j;
-                Vector3 posCella = new Vector3(posStart.x + (dimCella.x * j), posStart.y + (dimCella.y * i));
+                Vector3 posCella = new Vector3(posStart.x + (dimCella.x * i), posStart.y + (dimCella.y * j));
 
                 InfoCelle cella = new InfoCelle(orizzontale, verticale, posCella);
 
@@ -80,22 +115,22 @@ public class GesgtioneGriglia : MonoBehaviour
 
     void GeneraPezzi(byte[,] disposizione)
     {
-        for (int i = 0; i < DIM_X; i++)
+        for (int x = 0; x < DIM_X; x++)
         {
-            for (int j = 0; j < DIM_Y; j++)
+            for (int y = 0; y < DIM_Y; y++)
             {
-                Debug.Log(i + " " + j);
-                if (disposizione[j, i] != 0)
+                //Debug.Log(x + " " + y);
+                if (disposizione[x, y] != 0)
                 {
-                    InfoCelle cellaDaTrovare = GetInfoCelle((byte)i, (byte)j);
+                    InfoCelle cellaDaTrovare = GetInfoCelle((byte)x, (byte)y);
                     Vector3 puntoSpawn = cellaDaTrovare.posCella;
 
-                    GameObject pezzo = Instantiate(pezzi[disposizione[j, i]], new Vector3(puntoSpawn.x, puntoSpawn.y, g_transform.position.z - 1), Quaternion.identity);
+                    GameObject pezzo = Instantiate(pezzi[disposizione[x, y]], new Vector3(puntoSpawn.x, puntoSpawn.y, g_transform.position.z - 1), Quaternion.identity);
                     pezziGenerati.Add(pezzo);
 
                     cellaDaTrovare.pezzoInterno = pezzo;
 
-                    cellaDaTrovare.tipoPezzo = (tipoPezzo)disposizione[j, i];
+                    cellaDaTrovare.tipoPezzo = (tipoPezzo)disposizione[x, y];
                 }
 
                 //Coordinate_scacchiera coord = new Coordinate_scacchiera();
