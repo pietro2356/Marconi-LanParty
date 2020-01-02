@@ -26,6 +26,14 @@ public class GesgtioneGriglia : MonoBehaviour
         set { celleGriglia = value; }
     }
 
+    //Quaternion dritto = new Quaternion(0, 0, 0, 1);
+    //Quaternion novanta = new Quaternion(0, 0, 90, 1);
+    //Quaternion centoottanta = new Quaternion(0, 0, 180, 1);
+    //Quaternion duecentosettanta = new Quaternion(0, 0, 270, 1);
+
+    Quaternion[] orientamento = new Quaternion[] { new Quaternion(0, 0, 0, 1), new Quaternion(0, 0, 90, 1), new Quaternion(0, 0, 180, 1), new Quaternion(0, 0, 270, 1) };
+    System.Random random = new System.Random();
+
     //LA MATRICE VA LETTA GIRATA DI 90° IN SENSO ANTI-ORARIO!
     /*byte[,] prova = new byte[,] {
         { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } ,
@@ -39,20 +47,7 @@ public class GesgtioneGriglia : MonoBehaviour
     /* La matrice va girata di 90° in senso anti-orario!
      * O la si tiene così altrimenti bisogna creare un metodo per girarla.s
      */
-    byte[,] gameBoard = new byte[,]
-    {
-        { 1, 1, 1, 1, 1, 1 },
-        { 1, 1, 0, 0, 0, 0 },
-        { 1, 0, 1, 0, 0, 0 },
-        { 1, 0, 0, 1, 0, 0 },
-        { 1, 0, 0, 0, 1, 0 },
-        { 1, 0, 0, 0, 0, 1 },
-        { 1, 0, 0, 0, 1, 0 },
-        { 1, 0, 0, 1, 0, 0 },
-        { 1, 0, 1, 0, 0, 0 },
-        { 1, 1, 0, 0, 0, 0 },
-        { 1, 0, 0, 0, 0, 0 },
-    };
+
 
     void Awake()
     {
@@ -63,7 +58,7 @@ public class GesgtioneGriglia : MonoBehaviour
 
         SetupGriglia();
 
-        GeneraPezzi(gameBoard);
+        GeneraPezzi(Modelli.modello2.Schema);
     }
 
     #region NonServeAdUnCazzo
@@ -126,19 +121,17 @@ public class GesgtioneGriglia : MonoBehaviour
                     Vector3 puntoSpawn = cellaDaTrovare.posCella;
 
                     GameObject pezzo = Instantiate(pezzi[disposizione[x, y]], new Vector3(puntoSpawn.x, puntoSpawn.y, g_transform.position.z - 1), Quaternion.identity);
+                    byte rotazioni = (byte)random.Next(0, orientamento.Length);
+                    for (int i = 0; i < rotazioni; i++)
+                    {
+                        pezzo.transform.Rotate(0, 0, 90);
+                    }
                     pezziGenerati.Add(pezzo);
 
                     cellaDaTrovare.pezzoInterno = pezzo;
 
                     cellaDaTrovare.tipoPezzo = (tipoPezzo)disposizione[x, y];
                 }
-
-                //Coordinate_scacchiera coord = new Coordinate_scacchiera();
-                //coord.lettera = cellaDaTrovare.coordinate.lettera;
-                //coord.numero = cellaDaTrovare.coordinate.numero;
-
-                //manager_pezzi mp = pezzo.GetComponent<manager_pezzi>();
-                //mp.mieCoordinate = coord;
 
             }
         }
