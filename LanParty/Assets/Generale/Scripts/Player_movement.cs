@@ -6,7 +6,7 @@ public class Player_movement : MonoBehaviour
 {
     Rigidbody2D rb;
     CircleCollider2D circleCollider;
-    Scene_behaviour sb;
+    FirstLevel_script level;
     Dialog_Manager dm;
     private float movement = 0f;
     [SerializeField] private LayerMask layer;
@@ -35,14 +35,14 @@ public class Player_movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         originalGravity = rb.gravityScale;
-        sb = FindObjectOfType<Scene_behaviour>();
+        level = FindObjectOfType<FirstLevel_script>();
         dm = FindObjectOfType<Dialog_Manager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!sb.stopped && !dm.inDialog)
+        if (!level.stopped && !dm.inDialog)
         {
             movement = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(movement * movementVelocity, rb.velocity.y);
@@ -62,6 +62,8 @@ public class Player_movement : MonoBehaviour
             else
                 rb.gravityScale = originalGravity;
         }
+        else
+            rb.velocity = Vector2.zero;
     }
 
 }

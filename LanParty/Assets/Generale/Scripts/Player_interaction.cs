@@ -6,7 +6,12 @@ public class Player_interaction : MonoBehaviour
 {
     private Collider2D entity;
     private Dialogue dialogue;
+    private Dialog_Manager DM;
 
+    private void Start()
+    {
+        DM = GetComponent<Dialog_Manager>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,21 +28,24 @@ public class Player_interaction : MonoBehaviour
     {
         if (other.CompareTag("Interactable"))
             other.GetComponent<SpriteRenderer>().color = Color.white;
+   
+        if (DM != null && DM.inDialog)
+            DM.EndDialogue();
+
         entity = null;
-
-
     }
 
     void Update()
     {
         if (entity != null)
-            if (entity.name == "NPC" && Input.GetKeyDown(KeyCode.Space))
+            if (entity.name.StartsWith("NPC") && Input.GetKeyDown(KeyCode.Space))
             {
                 entity.GetComponent<SpriteRenderer>().color = Color.green;
                 entity.GetComponent<NPC_behaviour>().TriggerDialogue();
             }
-            else if (entity.name == "lever" && Input.GetKeyDown(KeyCode.Space))
+            else if (entity.name.StartsWith("lever") && Input.GetKeyDown(KeyCode.Space))
                 entity.GetComponent<Lever_behaviour>().isActivated = !entity.GetComponent<Lever_behaviour>().isActivated;
+
     }
 
 

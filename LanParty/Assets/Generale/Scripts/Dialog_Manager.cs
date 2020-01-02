@@ -7,26 +7,28 @@ public class Dialog_Manager : MonoBehaviour
 {
     public GameObject preFab;
     public Queue<string> sentences;
-    public bool inDialog = false;
+    public bool inDialog = false,
+        isTrigger;
 
     private GameObject popUp;
     private Text[] texts;
-    private Scene_behaviour sb;
+    private FirstLevel_script level;
+
     void Start()
     {
         sentences = new Queue<string>();
-        sb = FindObjectOfType<Scene_behaviour>();
+        level = FindObjectOfType<FirstLevel_script>();
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        sb.stopped = true;
+        level.stopped = true;
 
         popUp = Instantiate(preFab) as GameObject;
 
 
         texts = popUp.GetComponentsInChildren<Text>();
-        texts[0].text =  dialogue.name;
+        texts[0].text = dialogue.name;
 
         sentences.Clear();
 
@@ -55,15 +57,20 @@ public class Dialog_Manager : MonoBehaviour
         texts[1].text = sentence;
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
+        if (isTrigger)
+            level.TriggerEvent();
+        isTrigger = false;
         inDialog = false;
+        level.stopped = false;
         Destroy(popUp);
         Debug.Log("conversation ended");
     }
 
     void Update()
     {
-        sb.stopped = inDialog;
+        if (inDialog)
+            level.stopped = true;
     }
 }

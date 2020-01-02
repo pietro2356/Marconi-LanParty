@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Platform_behaviour : MonoBehaviour
 {
-    public SpriteRenderer SR;
+    public SpriteRenderer lever;
     public float Xmovement, Ymovement;
     public bool animated;
 
@@ -18,14 +18,14 @@ public class Platform_behaviour : MonoBehaviour
     {
         originalPosition = transform.position;
         newPosition = new Vector3(originalPosition.x + Xmovement, originalPosition.y + Ymovement);
-        if (!SR.GetComponent<Lever_behaviour>().isActivated)
+        if (!lever.GetComponent<Lever_behaviour>().isActivated)
             transform.position = newPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool active = SR.GetComponent<Lever_behaviour>().isActivated;
+        bool active = lever.GetComponent<Lever_behaviour>().isActivated;
 
 
 
