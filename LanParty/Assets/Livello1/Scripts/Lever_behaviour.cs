@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Lever_behaviour : MonoBehaviour
 {
-    public bool isActivated = false;
+    public bool isActivated = false,
+        isMoving = false;
     SpriteRenderer sprite;
 
     // Start is called before the first frame update

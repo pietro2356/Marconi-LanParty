@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Dialog_Manager : MonoBehaviour
 {
-    public GameObject preFab;
+    public GameObject sentencePreFab;
+    public GameObject questionPreFab;
     public Queue<string> sentences;
     public bool inDialog = false,
         isTrigger;
@@ -24,7 +25,7 @@ public class Dialog_Manager : MonoBehaviour
     {
         level.stopped = true;
 
-        popUp = Instantiate(preFab) as GameObject;
+        popUp = Instantiate(sentencePreFab) as GameObject;
 
 
         texts = popUp.GetComponentsInChildren<Text>();
@@ -40,8 +41,6 @@ public class Dialog_Manager : MonoBehaviour
         inDialog = true;
 
         DisplayNextSentence();
-
-
     }
 
     public void DisplayNextSentence()
@@ -54,6 +53,13 @@ public class Dialog_Manager : MonoBehaviour
 
         string sentence = sentences.Dequeue();
 
+        if(sentence.StartsWith("_Q"))
+        {
+            GameObject qPopUp = Instantiate(questionPreFab) as GameObject;
+
+
+        }
+        else
         texts[1].text = sentence;
     }
 

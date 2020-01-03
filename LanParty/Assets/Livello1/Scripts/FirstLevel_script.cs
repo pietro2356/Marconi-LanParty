@@ -12,7 +12,18 @@ public class FirstLevel_script : MonoBehaviour
     public GameObject gate,
         NPC_Luca,
         NPC_Dario;
-    public bool stopped;
+    public Camera_Behaviour mainCamera;
+    public Transform 
+        roofDoor,
+        movingPlatform;
+    public Lever_behaviour lever1,
+        lever2;
+
+    public bool stopped = false;
+
+
+    private float startingTime;
+
     void Start()
     {
         pm = FindObjectOfType<Player_movement>();
@@ -24,6 +35,29 @@ public class FirstLevel_script : MonoBehaviour
     {
         Debug.Log(stopped);
 
+        eventHandler();
+
+        if (lever1.isMoving)
+            cameraHandler(roofDoor, lever1);
+
+        if (lever2.isMoving)
+            cameraHandler(movingPlatform, lever2);
+    }
+
+    void initialScene()
+    {
+        player.transform.position = new Vector3(player.position.x + 0.03f, player.position.y);
+    }
+
+    public void TriggerEvent()
+    {
+        eventLoader++;
+        Debug.Log(eventLoader);
+
+    }
+
+    void eventHandler()
+    {
         switch (eventLoader)
         {
             case 0:
@@ -60,15 +94,26 @@ public class FirstLevel_script : MonoBehaviour
         }
     }
 
-    void initialScene()
+    void cameraHandler(Transform target, Lever_behaviour lever)
     {
-        player.transform.position = new Vector3(player.position.x + 0.03f, player.position.y);
-    }
+        Debug.Log(" time" + (Time.time - startingTime));
 
-    public void TriggerEvent()
-    {
-        eventLoader++;
-        Debug.Log(eventLoader);
+        if (startingTime == 0)
+        {
+            stopped = true;
+            startingTime = Time.time;
 
+        }
+        else if (Time.time - startingTime < 2)
+        {
+            mainCamera.target = target;
+        }
+        else
+        {
+            mainCamera.target = player.GetComponentInParent<Transform>();
+            stopped = false;
+            lever.isMoving = false;
+            startingTime = 0;
+        }
     }
 }

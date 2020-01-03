@@ -7,6 +7,7 @@ public class Player_interaction : MonoBehaviour
     private Collider2D entity;
     private Dialogue dialogue;
     private Dialog_Manager DM;
+    private FirstLevel_script FS;
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class Player_interaction : MonoBehaviour
     {
         if (other.CompareTag("Interactable"))
             other.GetComponent<SpriteRenderer>().color = Color.white;
-   
+
         if (DM != null && DM.inDialog)
             DM.EndDialogue();
 
@@ -37,15 +38,23 @@ public class Player_interaction : MonoBehaviour
 
     void Update()
     {
+
         if (entity != null)
+        {
             if (entity.name.StartsWith("NPC") && Input.GetKeyDown(KeyCode.Space))
             {
                 entity.GetComponent<SpriteRenderer>().color = Color.green;
                 entity.GetComponent<NPC_behaviour>().TriggerDialogue();
             }
             else if (entity.name.StartsWith("lever") && Input.GetKeyDown(KeyCode.Space))
-                entity.GetComponent<Lever_behaviour>().isActivated = !entity.GetComponent<Lever_behaviour>().isActivated;
-
+            {
+                if (!entity.GetComponent<Lever_behaviour>().isMoving)
+                {
+                    entity.GetComponent<Lever_behaviour>().isActivated = !entity.GetComponent<Lever_behaviour>().isActivated;
+                    entity.GetComponent<Lever_behaviour>().isMoving = true;
+                }
+            }
+        }
     }
 
 
