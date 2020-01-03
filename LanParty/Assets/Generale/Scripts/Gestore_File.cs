@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class Gestore_File : MonoBehaviour
 {
-    string[] file = new string[] { "Protagonista;Prova", "Protagonista;Prova2" };
     public Dialogo PrendiDialogo(int riga)
     {
-        string[] singolaRiga = file[riga].Split(';');
+        string[] singolaRiga = DialoghiLivello1.dialoghi[riga].Split(';');
         return new Dialogo(singolaRiga[0], singolaRiga[1]);
     }
 
     public Domanda PrendiDomanda(int numDomanda)
     {
-        return new Domanda("prova", "prova1", "prova2", "prova3", "prova4"); 
+        string[] singolaRiga = DialoghiLivello1.dialoghi[numDomanda].Split(';');
+        return new Domanda(singolaRiga[0], singolaRiga[1], singolaRiga[2], singolaRiga[3], singolaRiga[4]); 
     }
 }
 
