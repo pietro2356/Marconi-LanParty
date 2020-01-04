@@ -7,21 +7,25 @@ public enum tipoPezzo
 {
     vuoto,
     dritto,
-    curva
+    curva,
+    treUsite,
+    quatroUscite
 }
 
-public class Tubi : MonoBehaviour
+public class Tubi
 {
     public int x;
     public int y;
     public float gradi;
     public tipoPezzo tipoTubo;
+    public GameObject tubo;
 
-    public Tubi(int x, int y, float gradi, tipoPezzo tipoTubo)
+    public Tubi(int x, int y, float gradi, tipoPezzo tipoTubo, GameObject tubo)
     {
         this.x = x;
         this.y = y;
         this.gradi = gradi;
         this.tipoTubo = tipoTubo;
+        this.tubo = tubo;
     }
 }

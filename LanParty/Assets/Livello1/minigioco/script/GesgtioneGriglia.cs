@@ -26,10 +26,9 @@ public class GesgtioneGriglia : MonoBehaviour
         set { celleGriglia = value; }
     }
 
-    //Quaternion dritto = new Quaternion(0, 0, 0, 1);
-    //Quaternion novanta = new Quaternion(0, 0, 90, 1);
-    //Quaternion centoottanta = new Quaternion(0, 0, 180, 1);
-    //Quaternion duecentosettanta = new Quaternion(0, 0, 270, 1);
+    public static GesgtioneGriglia istanza;
+
+    public GameObject pannelloFine;
 
     Quaternion[] orientamento = new Quaternion[] { new Quaternion(0, 0, 0, 1), new Quaternion(0, 0, 90, 1), new Quaternion(0, 0, 180, 1), new Quaternion(0, 0, 270, 1) };
     System.Random random = new System.Random();
@@ -58,7 +57,9 @@ public class GesgtioneGriglia : MonoBehaviour
 
         SetupGriglia();
 
-        GeneraPezzi(Modelli.modello2.Schema);
+        GeneraPezzi(Modelli.modello1.Schema);
+
+        istanza = this;
     }
 
     #region NonServeAdUnCazzo
@@ -121,10 +122,14 @@ public class GesgtioneGriglia : MonoBehaviour
                     Vector3 puntoSpawn = cellaDaTrovare.posCella;
 
                     GameObject pezzo = Instantiate(pezzi[disposizione[x, y]], new Vector3(puntoSpawn.x, puntoSpawn.y, g_transform.position.z - 1), Quaternion.identity);
+
+                    griglia[x, y] = new Tubi(x, y, 0, (tipoPezzo)disposizione[x, y], pezzo);
+                    pezzo.GetComponent<Gestore_pezzo>().questo = griglia[x, y];
+
                     byte rotazioni = (byte)random.Next(0, orientamento.Length);
                     for (int i = 0; i < rotazioni; i++)
                     {
-                        pezzo.transform.Rotate(0, 0, 90);
+                        pezzo.GetComponent<Gestore_pezzo>().Ruota(); ;
                     }
                     pezziGenerati.Add(pezzo);
 
@@ -146,10 +151,41 @@ public class GesgtioneGriglia : MonoBehaviour
         return cella;
     }
 
+    public void ControllaVincita()
+    {
+        if (controllaPercorso())
+        {
+            pannelloFine.SetActive(true);
+        }
+    }
+
 
     public bool controllaPercorso()
     {
-        throw new NotImplementedException();
+        for (int x = 0; x < DIM_X; x++)
+        {
+            for (int y = 0; y < DIM_Y; y++)
+            {
+                if (griglia[x,y] != null)
+                {
+                    if (griglia[x,y].tipoTubo == tipoPezzo.dritto)
+                    {
+                        if (griglia[x, y].gradi != Modelli.modello1.Soluzione[x, y] && griglia[x, y].gradi + 180 != Modelli.modello1.Soluzione[x, y])
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        if (griglia[x, y].gradi != Modelli.modello1.Soluzione[x, y])
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
     }
 
 
