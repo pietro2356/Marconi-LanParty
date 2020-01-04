@@ -57,7 +57,7 @@ public class GesgtioneGriglia : MonoBehaviour
 
         SetupGriglia();
 
-        GeneraPezzi(Modelli.modello1.Schema);
+        GeneraPezzi(Modelli.modello2.Schema);
 
         istanza = this;
     }
@@ -168,16 +168,22 @@ public class GesgtioneGriglia : MonoBehaviour
             {
                 if (griglia[x,y] != null)
                 {
-                    if (griglia[x,y].tipoTubo == tipoPezzo.dritto)
+                    if (Modelli.modello2.Soluzione[x, y] == -1)
                     {
-                        if (griglia[x, y].gradi != Modelli.modello1.Soluzione[x, y] && griglia[x, y].gradi + 180 != Modelli.modello1.Soluzione[x, y])
+                    }
+                    else if (griglia[x,y].tipoTubo == tipoPezzo.dritto)
+                    {
+                        if (griglia[x, y].gradi != Modelli.modello2.Soluzione[x, y] && griglia[x, y].gradi + 180 != Modelli.modello2.Soluzione[x, y] && griglia[x, y].gradi - 180 != Modelli.modello2.Soluzione[x, y])
                         {
                             return false;
                         }
                     }
+                    else if (griglia[x, y].tipoTubo == tipoPezzo.quatroUscite)
+                    {
+                    }
                     else
                     {
-                        if (griglia[x, y].gradi != Modelli.modello1.Soluzione[x, y])
+                        if (griglia[x, y].gradi != Modelli.modello2.Soluzione[x, y])
                         {
                             return false;
                         }

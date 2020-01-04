@@ -16,11 +16,11 @@ public class Tubi
 {
     public int x;
     public int y;
-    public float gradi;
+    public int gradi;
     public tipoPezzo tipoTubo;
     public GameObject tubo;
 
-    public Tubi(int x, int y, float gradi, tipoPezzo tipoTubo, GameObject tubo)
+    public Tubi(int x, int y, int gradi, tipoPezzo tipoTubo, GameObject tubo)
     {
         this.x = x;
         this.y = y;
