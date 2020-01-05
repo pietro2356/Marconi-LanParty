@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public static class Modelli
 {
-    private static byte[,] base1 = new byte[,]
+    private static byte[,] base0 = new byte[,]
     {
         { 2, 1, 1, 1, 1, 1 },
         { 1, 0, 0, 0, 0, 0 },
@@ -19,7 +19,7 @@ public static class Modelli
         { 2, 0, 0, 0, 0, 0 },
     };
 
-    private static byte[,] base2 = new byte[,]
+    private static byte[,] base1 = new byte[,]
     {
         { 0, 0, 2, 1, 2, 1 },
         { 0, 0, 1, 4, 1, 3 },
@@ -34,7 +34,7 @@ public static class Modelli
         { 2, 0, 0, 0, 0, 0 },
     };
 
-    private static int[,] soluzione1 = new int[,]
+    private static int[,] soluzione0 = new int[,]
     {
         { 0, 0, 0, 0, 0, 0 },
         { 90, 0, 0, 0, 0, 0 },
@@ -49,7 +49,7 @@ public static class Modelli
         { 180, 0, 0, 0, 0, 0 },
     };
 
-    private static int[,] soluzione2 = new int[,]
+    private static int[,] soluzione1 = new int[,]
     {
         { -1, -1, -1, -1, 0, 0 },
         { -1, -1, -1, -1, 90, -1 },
@@ -64,8 +64,7 @@ public static class Modelli
         { 180, -1, -1, -1, -1, -1 },
     };
 
-    public static Modello modello1 = new Modello(base1, soluzione1);
-    public static Modello modello2 = new Modello(base2, soluzione2);
+    public static Modello[] modelli = new Modello[] { new Modello(base0, soluzione0), new Modello(base1, soluzione1) };
 }
 
 public class Modello

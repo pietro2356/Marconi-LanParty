@@ -13,12 +13,11 @@ public class GesgtioneGriglia : MonoBehaviour
     [NonSerialized]
     public Vector2 dimCella;
 
-    public Tubi[,] griglia = new Tubi[11, 6];
+    public Tubi[,] griglia = new Tubi[DIM_X, DIM_Y];
 
     static List<InfoCelle> celleGriglia;
 
     public List<GameObject> pezzi = new List<GameObject>();
-    List<GameObject> pezziGenerati = new List<GameObject>();
 
     public static List<InfoCelle> CelleGriglia
     {
@@ -30,22 +29,14 @@ public class GesgtioneGriglia : MonoBehaviour
 
     public GameObject pannelloFine;
 
-    Quaternion[] orientamento = new Quaternion[] { new Quaternion(0, 0, 0, 1), new Quaternion(0, 0, 90, 1), new Quaternion(0, 0, 180, 1), new Quaternion(0, 0, 270, 1) };
+    [NonSerialized]
+    public bool giocoAttivo;
+
     System.Random random = new System.Random();
 
-    //LA MATRICE VA LETTA GIRATA DI 90° IN SENSO ANTI-ORARIO!
-    /*byte[,] prova = new byte[,] {
-        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } ,
-        { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-        { 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-        { 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 } ,
-        { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 } ,
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-    };*/
+    byte modelloUsato;
 
-    /* La matrice va girata di 90° in senso anti-orario!
-     * O la si tiene così altrimenti bisogna creare un metodo per girarla.s
-     */
+    public GameObject timer;
 
 
     void Awake()
@@ -57,34 +48,28 @@ public class GesgtioneGriglia : MonoBehaviour
 
         SetupGriglia();
 
-        GeneraPezzi(Modelli.modello2.Schema);
+        modelloUsato = (byte)random.Next(0, Modelli.modelli.Length);
+
+        GeneraPezzi(Modelli.modelli[modelloUsato].Schema);
 
         istanza = this;
+
+        giocoAttivo = true;
+
+        timer.GetComponent<Gestore_Timer>().avviaTimer();
     }
-
-    #region NonServeAdUnCazzo
-    void Test(int x, int y, byte[,] matrix)
-    {
-        InfoCelle cellaDaTrovare = GetInfoCelle((byte)x, (byte)y);
-        Vector3 puntoSpawn = cellaDaTrovare.posCella;
-
-        GameObject pezzo = Instantiate(pezzi[matrix[x, y]], new Vector3(puntoSpawn.x, puntoSpawn.y, g_transform.position.z - 1), Quaternion.identity);
-        pezziGenerati.Add(pezzo);
-
-        cellaDaTrovare.pezzoInterno = pezzo;
-
-        cellaDaTrovare.tipoPezzo = (tipoPezzo)matrix[x, y];
-    }
-    # endregion NonServeAdUnCazzo
 
     void SetupGriglia()
     {
         celleGriglia.Clear();
-        foreach (var pezzo in pezziGenerati)
+        foreach (var pezzo in griglia)
         {
-            Destroy(pezzo);
+            if (pezzo != null)
+            {
+                Destroy(pezzo.tubo);
+            }
         }
-        pezziGenerati.Clear();
+        griglia = new Tubi[DIM_X, DIM_Y];
 
         Vector3 dimScacchiera = g_renderer.size;
 
@@ -115,7 +100,6 @@ public class GesgtioneGriglia : MonoBehaviour
         {
             for (int y = 0; y < DIM_Y; y++)
             {
-                //Debug.Log(x + " " + y);
                 if (disposizione[x, y] != 0)
                 {
                     InfoCelle cellaDaTrovare = GetInfoCelle((byte)x, (byte)y);
@@ -126,12 +110,11 @@ public class GesgtioneGriglia : MonoBehaviour
                     griglia[x, y] = new Tubi(x, y, 0, (tipoPezzo)disposizione[x, y], pezzo);
                     pezzo.GetComponent<Gestore_pezzo>().questo = griglia[x, y];
 
-                    byte rotazioni = (byte)random.Next(0, orientamento.Length);
+                    byte rotazioni = (byte)random.Next(0, 4);
                     for (int i = 0; i < rotazioni; i++)
                     {
                         pezzo.GetComponent<Gestore_pezzo>().Ruota(); ;
                     }
-                    pezziGenerati.Add(pezzo);
 
                     cellaDaTrovare.pezzoInterno = pezzo;
 
@@ -156,6 +139,7 @@ public class GesgtioneGriglia : MonoBehaviour
         if (controllaPercorso())
         {
             pannelloFine.SetActive(true);
+            giocoAttivo = false;
         }
     }
 
@@ -168,12 +152,12 @@ public class GesgtioneGriglia : MonoBehaviour
             {
                 if (griglia[x,y] != null)
                 {
-                    if (Modelli.modello2.Soluzione[x, y] == -1)
+                    if (Modelli.modelli[modelloUsato].Soluzione[x, y] == -1)
                     {
                     }
                     else if (griglia[x,y].tipoTubo == tipoPezzo.dritto)
                     {
-                        if (griglia[x, y].gradi != Modelli.modello2.Soluzione[x, y] && griglia[x, y].gradi + 180 != Modelli.modello2.Soluzione[x, y] && griglia[x, y].gradi - 180 != Modelli.modello2.Soluzione[x, y])
+                        if (griglia[x, y].gradi != Modelli.modelli[modelloUsato].Soluzione[x, y] && griglia[x, y].gradi + 180 != Modelli.modelli[modelloUsato].Soluzione[x, y] && griglia[x, y].gradi - 180 != Modelli.modelli[modelloUsato].Soluzione[x, y])
                         {
                             return false;
                         }
@@ -183,7 +167,7 @@ public class GesgtioneGriglia : MonoBehaviour
                     }
                     else
                     {
-                        if (griglia[x, y].gradi != Modelli.modello2.Soluzione[x, y])
+                        if (griglia[x, y].gradi != Modelli.modelli[modelloUsato].Soluzione[x, y])
                         {
                             return false;
                         }
@@ -193,8 +177,6 @@ public class GesgtioneGriglia : MonoBehaviour
         }
         return true;
     }
-
-
 }
 
 public struct Coordinate_scacchiera
