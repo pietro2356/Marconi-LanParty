@@ -19,7 +19,8 @@ public class Player_movement : MonoBehaviour
         jumpForce = 0f,
         climbingSpeed = 0f;
 
-    public bool onLadder = false;
+    public bool onLadder = false,
+        facingRight;
         
 
     private bool isGrounded()
@@ -46,6 +47,11 @@ public class Player_movement : MonoBehaviour
         {
             movement = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(movement * movementVelocity, rb.velocity.y);
+
+            if (movement > 0)
+                facingRight = true;
+            else if(movement != 0)
+                facingRight = false;
 
             if (Input.GetKeyDown(KeyCode.W) && isGrounded())
                 rb.velocity = Vector2.up * jumpForce;

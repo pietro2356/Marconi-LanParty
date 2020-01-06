@@ -70,7 +70,7 @@ public class FirstLevel_script : MonoBehaviour
                     stopped = false;
                 break;
             case 1:
-                if (gate.transform.position.y < 0)
+                if (gate.transform.position.y < 6)
                     gate.transform.position = new Vector3(gate.transform.position.x, gate.transform.position.y + 0.1f);
                 else if (NPC_Luca != null)
                 {
