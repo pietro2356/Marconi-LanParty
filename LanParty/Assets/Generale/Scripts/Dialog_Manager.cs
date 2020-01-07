@@ -15,13 +15,14 @@ public class Dialog_Manager : MonoBehaviour
     private Text[] texts;
     private FirstLevel_script level;
 
+
     void Start()
     {
         sentences = new Queue<string>();
         level = FindObjectOfType<FirstLevel_script>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(string[] dialogue)
     {
         level.stopped = true;
 
@@ -29,11 +30,10 @@ public class Dialog_Manager : MonoBehaviour
 
 
         texts = popUp.GetComponentsInChildren<Text>();
-        texts[0].text = dialogue.name;
 
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in dialogue)
         {
             sentences.Enqueue(sentence);
         }
@@ -53,14 +53,18 @@ public class Dialog_Manager : MonoBehaviour
 
         string sentence = sentences.Dequeue();
 
-        if(sentence.StartsWith("_Q"))
+        if (sentence.StartsWith("_Q"))
         {
             GameObject qPopUp = Instantiate(questionPreFab) as GameObject;
 
 
         }
         else
-        texts[1].text = sentence;
+        {
+            string[] dialogue = sentence.Split(';');
+            texts[0].text = dialogue[0];
+            texts[1].text = dialogue[1];
+        }
     }
 
     public void EndDialogue()

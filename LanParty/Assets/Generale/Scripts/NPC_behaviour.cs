@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class NPC_behaviour : MonoBehaviour
 {
-    public Dialogue dialogue;
     public bool isTrigger;
+    public int firstSentence,
+        sentenceNumber;
+
+    private Gestore_File GF = new Gestore_File();
     // Start is called before the first frame update
     public void TriggerDialogue()
     {
@@ -19,7 +22,18 @@ public class NPC_behaviour : MonoBehaviour
         if (DM.inDialog)
             DM.DisplayNextSentence();
         else
+        {
+            string[] dialogue = new string[sentenceNumber];
+
+            for (int i = firstSentence, count = 0; count < sentenceNumber; i++, count++)
+            {
+                dialogue[count] = GF.PrendiDialogo(i);
+            }
+
+
             DM.StartDialogue(dialogue);
+        }
+            
 
     }
 }

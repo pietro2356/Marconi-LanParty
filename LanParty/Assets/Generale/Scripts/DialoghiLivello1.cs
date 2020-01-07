@@ -7,9 +7,10 @@ public static class DialoghiLivello1
     public static string[] dialoghi = new string[] {
         "Protagonista;Nel 2035 le più grandi città erano delle discariche a cielo aperto",
         "Bambino;A cosa era dovuta questa situazione?",
-        "Protagonista;Era una conseguenza indiretta di alcuni problemi iniziati con la seconda rivoluzione industriale…",
+        "Protagonista;Era una conseguenza indiretta di alcuni problemi iniziati con la seconda rivoluzione industriale…", 
+        ";",
         //#DOMANDA 1,2
-        "Francesco;Oggi finalmente inizia la mia vita in città, ero proprio stanco del lavoro in campagna ma ora tutto sarà diverso finalmente il futuro. Oh un altro lavoratore credo che andrò a socializzare",
+        "Francesco;Oggi finalmente inizia la mia vita in città, ero proprio stanco del lavoro in campagna ma ora tutto sarà diverso finalmente il futuro. Oh un altro lavoratore credo che andrò a socializzare", //3
         "Francesco;Ciao",
         "Operaio;Tu devi essere quello nuovo",
         "Francesco;si esatto tu invece sei?",
@@ -24,14 +25,15 @@ public static class DialoghiLivello1
         "Luca;Niente a dopo",
         "Francesco;Finalmente si inizia il lavora in fabbrica sono sicuro che Luca sia la pecora nera", //(pensato)
         //#DOMANDA 3,4
-        "Operaio;Ciao tu devi essere quello nuovo",
+        "Operaio;Ciao tu devi essere quello nuovo", //17
         "Francesco;Ciao, sono io, Ho iniziato questa mattina, Certo che questo lavoro è molto duro però non è niente rispetto al lavoro in campagna sono fiducioso che quando mi adatterò andrà molto meglio",
         "Operaio;se vieni dalle campagne ti conviene tornarci finchè sei in tempo",
         "Francesco;Tornare in campagna?ma non posso ho venduto tutto per venire qui e poi perché dovrei andarmene questo è il futuro",
         "Operaio;Se questo è il futuro si stava meglio nel passato",
         "Operaio;Comunque gianni mi ha detto di mandarti dal lui terzo piano con una chiave inglese",
-        "Francesco;Devono essere 2 le pecore nere e non mi sono nemmeno presentato vabbè ci saranno altre occasioni", // (pensato)
-        "Francesco;Ciao, Sei tu gianni?",
+        "Francesco;Devono essere 2 le pecore nere e non mi sono nemmeno presentato vabbè ci saranno altre occasioni", // (pensato) 
+
+        "Francesco;Ciao, Sei tu gianni?", //24
         "Gianni;Sì sono io, piacere",
         "Francesco;Ciao Gianni io sono Francesco.Mi sapresti dire come mai tutti odiano lavorare qui?",
         "Gianni;Non odiano il lavoro in sé per quanto duro sia ben sia le condizioni che impone",
@@ -97,7 +99,16 @@ public static class DialoghiLivello1
         "Bambino;si ha senso",
         "Protagonista;Inoltre questo non era l’unico problema c’era anche l’inquinamento atmosferico",
         "Bambino;Cosa sarebbe?",
-        "Protagonista;Non sei molto informato eh? ma va bene ti racconterò anche questo"
+        "Protagonista;Non sei molto informato eh? ma va bene ti racconterò anche questo",
+
+        //per le comparse
+        "Operaio;Cosa vuoi?!?", //86
+        "Operaio;Levati...",
+        "Operaio;Non posso vivere così",
+        "Operaio;...",
+        "Operaio;Il turno di ieri è stato straziante...",
+        "Operaio;Non so come faccio ad essere ancora in piedi"
+
     };
 
     public static string[] domande = new string[] {

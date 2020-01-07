@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Gestore_File : MonoBehaviour
 {
-    public Dialogo PrendiDialogo(int riga)
+    public string PrendiDialogo(int riga)
     {
-        string[] singolaRiga = DialoghiLivello1.dialoghi[riga].Split(';');
-        return new Dialogo(singolaRiga[0], singolaRiga[1]);
+        string singolaRiga = DialoghiLivello1.dialoghi[riga];
+        return singolaRiga;
     }
 
     public Domanda PrendiDomanda(int numDomanda)
@@ -42,17 +42,3 @@ public class Domanda
     }
 }
 
-public class Dialogo
-{
-    string personaggio;
-    string discorso;
-
-    public string Personaggio { get => personaggio; set => personaggio = value; }
-    public string Discorso { get => discorso; set => discorso = value; }
-
-    public Dialogo(string personaggio, string discorso)
-    {
-        Personaggio = personaggio;
-        Discorso = discorso;
-    }
-}

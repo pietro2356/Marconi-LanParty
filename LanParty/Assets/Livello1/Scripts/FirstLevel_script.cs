@@ -6,7 +6,7 @@ public class FirstLevel_script : MonoBehaviour
 {
     Player_movement pm;
 
-    private int eventLoader = 0;
+    private int eventLoader = -2;
 
     public Rigidbody2D player;
     public GameObject gate,
@@ -18,15 +18,20 @@ public class FirstLevel_script : MonoBehaviour
         movingPlatform;
     public Lever_behaviour lever1,
         lever2;
+    public GameObject nextScene;
 
     public bool stopped = false;
 
 
     private float startingTime;
+    private bool firstTime = true;
+    private Dialog_Manager DM;
+    private Gestore_File GF = new Gestore_File();
 
     void Start()
     {
         pm = FindObjectOfType<Player_movement>();
+        DM = FindObjectOfType<Dialog_Manager>();
         stopped = true;
     }
 
@@ -60,17 +65,24 @@ public class FirstLevel_script : MonoBehaviour
     {
         switch (eventLoader)
         {
-            case 0:
+            case -2:
+                introduction();
+                break;
+
+            case -1:
                 if (player.position.x < -7)
                 {
                     initialScene();
                     stopped = true;
                 }
                 else
+                {
                     stopped = false;
+                    eventLoader++;
+                }
                 break;
             case 1:
-                if (gate.transform.position.y < 6)
+                if (gate.transform.position.y < 0)
                     gate.transform.position = new Vector3(gate.transform.position.x, gate.transform.position.y + 0.1f);
                 else if (NPC_Luca != null)
                 {
@@ -90,6 +102,10 @@ public class FirstLevel_script : MonoBehaviour
                     else
                         Destroy(NPC_Dario);
                 }
+                break;
+            case 3:
+                Gestiore_Gioco GG = new Gestiore_Gioco();
+                GG.CambiaScena(2);
                 break;
         }
     }
@@ -114,6 +130,31 @@ public class FirstLevel_script : MonoBehaviour
             stopped = false;
             lever.isMoving = false;
             startingTime = 0;
+        }
+    }
+
+    void introduction()
+    {
+        if (DM.inDialog)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                DM.DisplayNextSentence();
+        }
+        else
+        {
+
+            if (firstTime)
+            {
+                string[] dialogue = new string[5];
+                for (int i = 0; i < 5; i++)
+                {
+                    dialogue[i] = GF.PrendiDialogo(i);
+                }
+                DM.StartDialogue(dialogue);
+                firstTime = false;
+            }
+            else
+                eventLoader++;
         }
     }
 }

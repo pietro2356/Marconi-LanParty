@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player_interaction : MonoBehaviour
 {
     private Collider2D entity;
-    private Dialogue dialogue;
     private Dialog_Manager DM;
     private FirstLevel_script FS;
 
