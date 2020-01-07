@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Background_behaviour : MonoBehaviour
 {
-    public Transform camera;
-    public Vector2 offset;
+    public Transform camera,
+        player;
 
     private void Update()
     {
-        transform.position = new Vector3(camera.position.x + offset.x +  camera.position.x * -0.05f, camera.position.y + offset.y + camera.position.y * -0.05f);
+        transform.position = new Vector3(camera.position.x + player.position.x * -0.01f, camera.position.y + player.position.y * 0.01f);
     }
 }

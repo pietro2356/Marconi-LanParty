@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":-10.526978492736817,"y":-3.8294646739959719,"z":-794.6922607421875},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":6.351305961608887,"orthographic":true}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":25.67120933532715,"y":23.803882598876954,"z":-724.265625},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":74.29173278808594,"orthographic":true}
+>>>>>>> parent of c0ae61b... fixes
