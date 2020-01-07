@@ -48,7 +48,7 @@ public class GesgtioneGriglia : MonoBehaviour
 
         SetupGriglia();
 
-        modelloUsato = (byte)random.Next(0, Modelli.modelli.Length);
+        modelloUsato = (byte)random.Next(1, Modelli.modelli.Length);
 
         GeneraPezzi(Modelli.modelli[modelloUsato].Schema);
 

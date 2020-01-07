@@ -34,6 +34,36 @@ public static class Modelli
         { 2, 0, 0, 0, 0, 0 },
     };
 
+    private static byte[,] base2 = new byte[,]
+    {
+        { 0, 0, 0, 2, 1, 1 },
+        { 0, 0, 3, 1, 2, 0 },
+        { 0, 0, 1, 1, 3, 0 },
+        { 0, 0, 1, 3, 1, 2 },
+        { 0, 2, 2, 1, 2, 1 },
+        { 0, 3, 2, 3, 1, 2 },
+        { 0, 2, 1, 2, 1, 1 },
+        { 1, 2, 2, 1, 0, 0 },
+        { 2, 1, 3, 1, 0, 0 },
+        { 1, 1, 1, 0, 0, 0 },
+        { 1, 2, 0, 0, 0, 0 },
+    };
+
+    private static byte[,] base3 = new byte[,]
+    {
+        { 0, 0, 1, 2, 1, 1 },
+        { 0, 2, 3, 1, 2, 0 },
+        { 0, 0, 1, 1, 0, 0 },
+        { 0, 0, 3, 2, 2, 4 },
+        { 2, 1, 3, 1, 2, 1 },
+        { 1, 2, 1, 2, 2, 0 },
+        { 2, 1, 4, 1, 2, 0 },
+        { 0, 0, 2, 3, 2, 0 },
+        { 0, 2, 2, 1, 4, 0 },
+        { 2, 1, 1, 2, 2, 0 },
+        { 2, 2, 3, 2, 0, 0 },
+    };
+
     private static int[,] soluzione0 = new int[,]
     {
         { 0, 0, 0, 0, 0, 0 },
@@ -64,7 +94,37 @@ public static class Modelli
         { 180, -1, -1, -1, -1, -1 },
     };
 
-    public static Modello[] modelli = new Modello[] { new Modello(base0, soluzione0), new Modello(base1, soluzione1) };
+    private static int[,] soluzione2 = new int[,]
+    {
+        { -1, -1, -1, 0, 0, 0 },
+        { -1, -1, -1, 90, -1, -1 },
+        { -1, -1, -1, 90, -1, -1 },
+        { -1, -1, -1, 270, 0, 270 },
+        { -1, -1, -1, 90, -1, 90 },
+        { -1, -1, 0, 0, 0, 180 },
+        { -1, -1, 90, -1, -1, -1 },
+        { -1, 0, 180, -1, -1, -1 },
+        { -1, 90, -1, -1, -1, -1 },
+        { -1, 90, -1, -1, -1, -1 },
+        { 0, 180, -1, -1, -1, -1 },
+    };
+
+    private static int[,] soluzione3 = new int[,]
+    {
+        { -1, -1, -1, 0, 0, 0 },
+        { -1, -1, -1, 90, -1, -1 },
+        { -1, -1, -1, 90, -1, -1 },
+        { -1, -1, -1, 90, 270, -1 },
+        { 0, 0, 180, 0, 180, -1 },
+        { 90, -1, 90, -1, -1, -1 },
+        { 90, 0, 0, 0, 270, -1 },
+        { -1, -1, 90, 180, 180, -1 },
+        { -1, -1, -1, 90, -1, -1 },
+        { 0, 0, 0, 180, -1, -1 },
+        { 180, -1, -1, -1, -1, -1 },
+    };
+
+    public static Modello[] modelli = new Modello[] { new Modello(base0, soluzione0), new Modello(base1, soluzione1), new Modello(base2, soluzione2), new Modello(base3, soluzione3) };
 }
 
 public class Modello
