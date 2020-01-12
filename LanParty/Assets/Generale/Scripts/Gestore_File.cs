@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class Gestore_File : MonoBehaviour
+public class Gestore_File
 {
     public string PrendiDialogo(int riga)
     {

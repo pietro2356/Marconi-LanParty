@@ -104,8 +104,7 @@ public class FirstLevel_script : MonoBehaviour
                 }
                 break;
             case 3:
-                Gestiore_Gioco GG = new Gestiore_Gioco();
-                GG.CambiaScena(2);
+                Gestiore_Gioco.CambiaScena(3);
                 break;
         }
     }

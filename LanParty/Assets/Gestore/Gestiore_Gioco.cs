@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Gestiore_Gioco : MonoBehaviour
 {
-    public void CambiaScena(int index)
+    public static void CambiaScena(int index)
     {
         SceneManager.LoadScene(index);
     }
