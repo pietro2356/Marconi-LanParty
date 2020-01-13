@@ -14,8 +14,11 @@ public class FirstLevel_script : MonoBehaviour
         NPC_Dario;
     public Camera_Behaviour mainCamera;
     public Transform 
-        roofDoor,
-        movingPlatform;
+        roofDoor_bookmark,
+        movingPlatform_bookmark,
+        lever1_bookmark,
+        lever2_bookmark,
+        roof_bookmark;
     public Lever_behaviour lever1,
         lever2;
     public GameObject nextScene;
@@ -24,7 +27,8 @@ public class FirstLevel_script : MonoBehaviour
 
 
     private float startingTime;
-    private bool firstTime = true;
+    private bool firstTime = true,
+        isTutorialAnimation = false;
     private Dialog_Manager DM;
     private Gestore_File GF = new Gestore_File();
 
@@ -43,10 +47,10 @@ public class FirstLevel_script : MonoBehaviour
         eventHandler();
 
         if (lever1.isMoving)
-            cameraHandler(roofDoor, lever1);
+            cameraHandler(roofDoor_bookmark, lever1);
 
         if (lever2.isMoving)
-            cameraHandler(movingPlatform, lever2);
+            cameraHandler(movingPlatform_bookmark, lever2);
     }
 
     void initialScene()
@@ -97,10 +101,17 @@ public class FirstLevel_script : MonoBehaviour
                 if (NPC_Dario != null)
                 {
                     NPC_Dario.tag = "Untagged";
-                    if (NPC_Dario.transform.position.x > 30)
+                    if (NPC_Dario.transform.position.x > 20)
                         NPC_Dario.transform.position = new Vector3(NPC_Dario.transform.position.x - 0.3f, NPC_Dario.transform.position.y);
                     else
+                    {
                         Destroy(NPC_Dario);
+                        isTutorialAnimation = true;
+                    }
+                }
+                if (NPC_Dario == null && isTutorialAnimation)
+                {
+                    tutorialAnimation();
                 }
                 break;
             case 3:
@@ -129,6 +140,34 @@ public class FirstLevel_script : MonoBehaviour
             stopped = false;
             lever.isMoving = false;
             startingTime = 0;
+        }
+    }
+
+    void tutorialAnimation()
+    {
+        if (startingTime == 0)
+        {
+            stopped = true;
+            startingTime = Time.time;
+
+        }
+        else if (Time.time - startingTime < 2)
+        {
+            mainCamera.target = roof_bookmark;
+        }
+        else if (Time.time - startingTime > 2 && Time.time - startingTime < 4)
+        {
+            mainCamera.target = lever2_bookmark;
+        }
+        else if (Time.time - startingTime > 4 && Time.time - startingTime < 6)
+        {
+            mainCamera.target = lever1_bookmark;
+        }
+        else
+        {
+            stopped = false;
+            isTutorialAnimation = false;
+            mainCamera.target = player.GetComponentInParent<Transform>();
         }
     }
 

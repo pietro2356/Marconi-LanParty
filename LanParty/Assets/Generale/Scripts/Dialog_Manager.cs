@@ -33,10 +33,13 @@ public class Dialog_Manager : MonoBehaviour
 
         sentences.Clear();
 
+
+
         foreach (string sentence in dialogue)
         {
             sentences.Enqueue(sentence);
         }
+
 
         inDialog = true;
 
@@ -78,9 +81,19 @@ public class Dialog_Manager : MonoBehaviour
         Debug.Log("conversation ended");
     }
 
+    public int GetSentenceNumber()
+    {
+        if (inDialog)
+            return sentences.Count;
+        else
+            return -1;
+    }
+
     void Update()
     {
         if (inDialog)
             level.stopped = true;
     }
+
+    
 }

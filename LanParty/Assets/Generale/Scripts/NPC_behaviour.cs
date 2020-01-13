@@ -9,6 +9,7 @@ public class NPC_behaviour : MonoBehaviour
         sentenceNumber;
 
     private Gestore_File GF = new Gestore_File();
+    private bool hasSpoken = false;
     // Start is called before the first frame update
     public void TriggerDialogue()
     {
@@ -21,7 +22,7 @@ public class NPC_behaviour : MonoBehaviour
             
         if (DM.inDialog)
             DM.DisplayNextSentence();
-        else
+        else if(!hasSpoken)
         {
             string[] dialogue = new string[sentenceNumber];
 
@@ -30,6 +31,7 @@ public class NPC_behaviour : MonoBehaviour
                 dialogue[count] = GF.PrendiDialogo(i);
             }
 
+            hasSpoken = true;
 
             DM.StartDialogue(dialogue);
         }
