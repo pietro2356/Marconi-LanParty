@@ -825,3 +825,4 @@ D:\Unity Project\Marconi-LanParty\LanParty\obj\Debug\Assembly-CSharp.csproj.Core
 D:\Unity Project\Marconi-LanParty\LanParty\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\Unity Project\Marconi-LanParty\LanParty\obj\Debug\Assembly-CSharp.dll
 D:\Unity Project\Marconi-LanParty\LanParty\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\CLComunicazione.dll
