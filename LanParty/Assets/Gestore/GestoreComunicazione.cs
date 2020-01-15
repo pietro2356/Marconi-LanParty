@@ -26,7 +26,7 @@ public class GestoreComunicazione : MonoBehaviour
 
         IniziaConnessione();
 
-        CambiaLivello(0);
+        CambiaLivello(1);
 
     }
 
@@ -38,7 +38,8 @@ public class GestoreComunicazione : MonoBehaviour
             string mess = connessione.Ricezione();
             if (mess == "INIZIO$")
             {
-                Gestiore_Gioco.CambiaScena(1);
+                Debug.Log("inizio");
+                //Gestiore_Gioco.CambiaScena(1);
                 i++;
             }
         }
@@ -53,7 +54,7 @@ public class GestoreComunicazione : MonoBehaviour
             if (mess == "INIZIOLIVELLO$")
             {
                 Debug.Log("cambioSCena");
-                //Gestiore_Gioco.CambiaScena(nScena);
+                Gestiore_Gioco.CambiaScena(nScena);
                 i++;
             }
         }
@@ -94,10 +95,10 @@ public class GestoreComunicazione : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Gestiore_Gioco.CambiaScena(1);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Gestiore_Gioco.CambiaScena(1);
+        //}
 
         //if (Input.GetKeyDown(KeyCode.C))
         //{
