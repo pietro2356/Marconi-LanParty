@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstLevel_script : MonoBehaviour
+public class FirstLevel_script : Scene_manager
 {
-    Player_movement pm;
 
-    private int eventLoader = -2;
 
     public Rigidbody2D player;
     public GameObject gate,
@@ -23,7 +21,6 @@ public class FirstLevel_script : MonoBehaviour
         lever2;
     public GameObject nextScene;
 
-    public bool stopped = false;
 
 
     private float startingTime;
@@ -56,13 +53,6 @@ public class FirstLevel_script : MonoBehaviour
     void initialScene()
     {
         player.transform.position = new Vector3(player.position.x + 0.03f, player.position.y);
-    }
-
-    public void TriggerEvent()
-    {
-        eventLoader++;
-        Debug.Log(eventLoader);
-
     }
 
     void eventHandler()

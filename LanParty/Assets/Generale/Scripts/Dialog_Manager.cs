@@ -13,7 +13,7 @@ public class Dialog_Manager : MonoBehaviour
 
     private GameObject popUp;
     private Text[] texts;
-    private FirstLevel_script level;
+    private Scene_manager level;
 
 
     void Start()

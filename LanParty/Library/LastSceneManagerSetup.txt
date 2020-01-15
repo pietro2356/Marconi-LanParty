@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Gestore/scenaIniziale.unity
+- path: Assets/Livello1/Scenes/Level 1 - Streets.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
