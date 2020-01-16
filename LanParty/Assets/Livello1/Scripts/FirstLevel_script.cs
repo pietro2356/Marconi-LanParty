@@ -18,7 +18,6 @@ public class FirstLevel_script : Scene_manager
         roof_bookmark;
     public Lever_behaviour lever1,
         lever2;
-    public GameObject nextScene;
 
 
 
@@ -92,7 +91,7 @@ public class FirstLevel_script : Scene_manager
                 }
                 break;
             case 3:
-                Gestiore_Gioco.CambiaScena(3);
+                Gestiore_Gioco.CambiaScena(2);
                 break;
         }
     }
