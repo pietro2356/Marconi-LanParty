@@ -6,7 +6,6 @@ public class FirstLevel_script : Scene_manager
 {
 
 
-    public Rigidbody2D player;
     public GameObject gate,
         NPC_Luca,
         NPC_Dario;
@@ -24,23 +23,11 @@ public class FirstLevel_script : Scene_manager
 
 
     private float startingTime;
-    private bool firstTime = true,
-        isTutorialAnimation = false;
-    private Dialog_Manager DM;
-    private Gestore_File GF = new Gestore_File();
-
-    void Start()
-    {
-        pm = FindObjectOfType<Player_movement>();
-        DM = FindObjectOfType<Dialog_Manager>();
-        stopped = true;
-    }
+    private bool isTutorialAnimation = false;
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stopped);
-
         eventHandler();
 
         if (lever1.isMoving)
@@ -112,7 +99,6 @@ public class FirstLevel_script : Scene_manager
 
     void cameraHandler(Transform target, Lever_behaviour lever)
     {
-        Debug.Log(" time" + (Time.time - startingTime));
 
         if (startingTime == 0)
         {

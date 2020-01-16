@@ -19,7 +19,7 @@ public class Dialog_Manager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-        level = FindObjectOfType<FirstLevel_script>();
+        level = FindObjectOfType<Scene_manager>();
     }
 
     public void StartDialogue(string[] dialogue)

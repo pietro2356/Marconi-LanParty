@@ -47,7 +47,7 @@ public static class DialoghiLivello1
         "Gianni;Per nulla anzi è quasi impossibile.Ciò che intendo è che se ti ammali sei licenziato, se un giorno arrivi in ritardo aspettati che al tuo posto ci sia qualcun altro,e per le donne è anche peggio…",
         "Francesco;Capisco… sono finito proprio all’inferno ma a questo punto è troppo tardi per tornare indietro",
         //#DOMANDA 5,6
-        "Francesco;Certo che in questa città le strade sono proprio piene di sporcizia inizio a capire cosa voleva dirmi Luca… \nCredo seguirò il suo consiglio e andrò al bar",
+        "Francesco;Certo che in questa città le strade sono proprio piene di sporcizia inizio a capire cosa voleva dirmi Luca… \nCredo seguirò il suo consiglio e andrò al bar",//38
         "Luca;Ciao Francesco sapevo che ti avrei rivisto qui ma non pensavo l’avrei fatto così presto",
         "Francesco;Beh ho pensato che se voglio adeguarmi a questa vita velocizzare il tutto è il modo migliore",
         "Luca;Attento a non velocizzare troppo o perderai il lavoro",
@@ -107,7 +107,12 @@ public static class DialoghiLivello1
         "Operaio;Non posso vivere così",
         "Operaio;...",
         "Operaio;Il turno di ieri è stato straziante...",
-        "Operaio;Non so come faccio ad essere ancora in piedi"
+        "Operaio;Non so come faccio ad essere ancora in piedi",
+        //bar
+        "Uomo;(sorseggia)", //93
+        "Alcolista;(Ha lo sguardo perso nel vuoto)",
+        "Barista;Cosa posso darti da bere?"
+        
 
     };
 
