@@ -826,3 +826,29 @@ D:\Unity Project\Marconi-LanParty\LanParty\obj\Debug\Assembly-CSharp.csproj.Copy
 D:\Unity Project\Marconi-LanParty\LanParty\obj\Debug\Assembly-CSharp.dll
 D:\Unity Project\Marconi-LanParty\LanParty\obj\Debug\Assembly-CSharp.pdb
 C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\CLComunicazione.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\PsdPlugin.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Animation.Editor.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Animation.Runtime.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Animation.Triangle.Runtime.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Common.Editor.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Common.Runtime.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.IK.Editor.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.IK.Runtime.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Psdimporter.Editor.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.InternalAPIEditorBridge.001.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.InternalAPIEngineBridge.001.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.Mathematics.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.Mathematics.Editor.dll
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Animation.Runtime.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.IK.Editor.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.IK.Runtime.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Animation.Triangle.Runtime.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\PsdPlugin.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.Mathematics.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Psdimporter.Editor.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.InternalAPIEngineBridge.001.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Common.Runtime.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Animation.Editor.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.Mathematics.Editor.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.2D.Common.Editor.pdb
+C:\Users\Daxele\Documents\Unity\LanParty\Marconi-LanParty\LanParty\Temp\bin\Debug\Unity.InternalAPIEditorBridge.001.pdb

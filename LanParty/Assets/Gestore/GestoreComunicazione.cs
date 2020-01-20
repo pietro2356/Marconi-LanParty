@@ -8,6 +8,8 @@ using System.Net;
 public class GestoreComunicazione : MonoBehaviour
 {
     ConnPermanenteSync connessione;
+    int[] sceneiniziali = { 1 };
+    int livello = 0;
 
     void Start()
     {
@@ -24,10 +26,16 @@ public class GestoreComunicazione : MonoBehaviour
 
         connessione = new ConnPermanenteSync(server);
 
-        IniziaConnessione();
+        if (argomenti[3] == "true")
+        {
+            ChiamaRiconnessione();
+        }
+        else
+        {
+            IniziaConnessione();
 
-        CambiaLivello(1);
-
+            CambiaLivello(1);
+        }
     }
 
     void IniziaConnessione()
@@ -45,19 +53,32 @@ public class GestoreComunicazione : MonoBehaviour
         }
     }
 
-    void CambiaLivello(int nScena)
+    void CambiaLivello(int livello)
     {
         connessione.MessaggioTx("FINELIVELLO$");
+        this.livello = livello;
         for (byte i = 0; i < 1;)
         {
             string mess = connessione.Ricezione();
             if (mess == "INIZIOLIVELLO$")
             {
                 Debug.Log("cambioSCena");
-                Gestiore_Gioco.CambiaScena(nScena);
+                Gestore_Gioco.CambiaScena(livello);
                 i++;
             }
         }
+    }
+
+    public string PrendiDialogo(int riga)
+    {
+        switch (livello)
+        {
+            case 1:
+                return DialoghiLivello1.dialoghi[riga];
+            default:
+                return "";
+        }
+        
     }
 
     Domanda RichiediDomanda()
@@ -93,6 +114,20 @@ public class GestoreComunicazione : MonoBehaviour
         connessione.MessaggioTx("FINEMINIGIOCO$" + punteggio);
     }
 
+    private void ChiamaRiconnessione()
+    {
+        connessione.MessaggioTx("RICONNESSIONE$");
+        for (byte i = 0; i < 1;)
+        {
+            string[] mess = connessione.Ricezione().Split('$');
+            if (mess[0] == "RICONNESSO")
+            {
+                CambiaLivello(Convert.ToInt32(mess[2]) + 1);
+                i++;
+            }
+        }
+    }
+
     void Update()
     {
         //if (Input.GetKeyDown(KeyCode.Space))
@@ -120,5 +155,29 @@ public class GestoreComunicazione : MonoBehaviour
         //{
         //    FineMinigioco(50);
         //}
+    }
+}
+
+public class Domanda
+{
+    string testo;
+    string risposta1;
+    string risposta2;
+    string risposta3;
+    string risposta4;
+
+    public string Testo { get => testo; set => testo = value; }
+    public string Risposta1 { get => risposta1; set => risposta1 = value; }
+    public string Risposta2 { get => risposta2; set => risposta2 = value; }
+    public string Risposta3 { get => risposta3; set => risposta3 = value; }
+    public string Risposta4 { get => risposta4; set => risposta4 = value; }
+
+    public Domanda(string testo, string risposta1, string risposta2, string risposta3, string risposta4)
+    {
+        Testo = testo;
+        Risposta1 = risposta1;
+        Risposta2 = risposta2;
+        Risposta3 = risposta3;
+        Risposta4 = risposta4;
     }
 }

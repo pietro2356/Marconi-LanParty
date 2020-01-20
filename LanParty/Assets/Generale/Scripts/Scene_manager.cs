@@ -15,14 +15,14 @@ public class Scene_manager : MonoBehaviour
     protected Player_movement pm;
     protected int eventLoader = -3;
     protected Dialog_Manager DM;
-    protected Gestore_File GF = new Gestore_File();
+    protected GestoreComunicazione GC;
     protected bool firstTime = true;
 
     private void Start()
     {
         pm = FindObjectOfType<Player_movement>();
         DM = FindObjectOfType<Dialog_Manager>();
-
+        GC = GameObject.FindGameObjectsWithTag("GestoreGioco")[0].GetComponent<GestoreComunicazione>();
     }
 
     public void TriggerEvent()

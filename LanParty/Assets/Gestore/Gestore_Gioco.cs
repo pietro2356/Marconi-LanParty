@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class Gestiore_Gioco 
+public static class Gestore_Gioco 
 {
     public static void CambiaScena(int nScena)
     {

@@ -59,7 +59,7 @@ public class FirstLevel_Streets_script : Scene_manager
             {
                 string[] dialogue = new string[1];
                 
-                    dialogue[0] = GF.PrendiDialogo(38);
+                    dialogue[0] = GC.PrendiDialogo(38);
                 
                 DM.StartDialogue(dialogue);
                 firstTime = false;

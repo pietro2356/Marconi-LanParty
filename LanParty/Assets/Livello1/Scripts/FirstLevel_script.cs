@@ -164,7 +164,7 @@ public class FirstLevel_script : Scene_manager
                 string[] dialogue = new string[5];
                 for (int i = 0; i < 5; i++)
                 {
-                    dialogue[i] = GF.PrendiDialogo(i);
+                    dialogue[i] = GC.PrendiDialogo(i);
                 }
                 DM.StartDialogue(dialogue);
                 firstTime = false;
