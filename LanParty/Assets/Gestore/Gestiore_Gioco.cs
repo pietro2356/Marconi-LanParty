@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Gestiore_Gioco : MonoBehaviour
+public static class Gestiore_Gioco 
 {
-    public static void CambiaScena(int index)
+    public static void CambiaScena(int nScena)
     {
-        SceneManager.LoadScene(index);
+        SceneManager.LoadScene(nScena);
     }
 }

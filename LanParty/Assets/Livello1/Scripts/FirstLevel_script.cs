@@ -10,7 +10,7 @@ public class FirstLevel_script : Scene_manager
         NPC_Luca,
         NPC_Dario;
     public Camera_Behaviour mainCamera;
-    public Transform 
+    public Transform
         roofDoor_bookmark,
         movingPlatform_bookmark,
         lever1_bookmark,
@@ -45,6 +45,9 @@ public class FirstLevel_script : Scene_manager
     {
         switch (eventLoader)
         {
+            case -3:
+                StartAnimation();
+                break;
             case -2:
                 introduction();
                 break;
@@ -91,7 +94,7 @@ public class FirstLevel_script : Scene_manager
                 }
                 break;
             case 3:
-                Gestiore_Gioco.CambiaScena(2);
+                LoadNextScene();
                 break;
         }
     }

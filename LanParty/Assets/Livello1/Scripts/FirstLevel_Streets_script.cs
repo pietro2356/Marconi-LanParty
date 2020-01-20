@@ -6,6 +6,7 @@ public class FirstLevel_Streets_script : Scene_manager
 {
     private void Update()
     {
+        Debug.Log(eventLoader);
         eventHandler();
     }
 
@@ -13,6 +14,9 @@ public class FirstLevel_Streets_script : Scene_manager
     {
         switch (eventLoader)
         {
+            case -3:
+                StartAnimation();
+                break;
             case -2:
                 if (player.position.x < -7)
                 {
@@ -27,6 +31,9 @@ public class FirstLevel_Streets_script : Scene_manager
                 break;
             case -1:
                 introduction();
+                break;
+            case 1:
+                LoadNextScene();
                 break;
 
             

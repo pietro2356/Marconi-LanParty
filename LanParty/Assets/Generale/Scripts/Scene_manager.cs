@@ -22,7 +22,7 @@ public class Scene_manager : MonoBehaviour
     {
         pm = FindObjectOfType<Player_movement>();
         DM = FindObjectOfType<Dialog_Manager>();
-        
+
     }
 
     public void TriggerEvent()
@@ -30,19 +30,33 @@ public class Scene_manager : MonoBehaviour
         eventLoader++;
     }
 
-    public void nextLevel()
+    //actually, it doesn't start the animation, he waits the end of it before starting the scene
+    protected void StartAnimation()
     {
-        animator.SetTrigger("Fade_out");
+        StartCoroutine(BeginScene());
     }
 
-    public void OnFadeInComplete()
+    protected void LoadNextScene()
     {
-        TriggerEvent();
+        StartCoroutine(LoadScene(nextScene));
     }
 
-    public void OnFadeOutComplete()
+    IEnumerator LoadScene(int scene)
     {
-        SceneManager.LoadScene(nextScene);
+        animator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene(scene);
+    }
+
+    IEnumerator BeginScene()
+    {
+        yield return new WaitForSeconds(1);
+
+        eventLoader++;
+
+        StopAllCoroutines();
     }
 
 
