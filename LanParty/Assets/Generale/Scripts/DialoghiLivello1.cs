@@ -7,7 +7,7 @@ public static class DialoghiLivello1
     public static string[] dialoghi = new string[] {
         "Protagonista;Nel 2035 le più grandi città erano delle discariche a cielo aperto",
         "Bambino;A cosa era dovuta questa situazione?",
-        "Protagonista;Era una conseguenza indiretta di alcuni problemi iniziati con la seconda rivoluzione industriale…", 
+        "Protagonista;Era una conseguenza indiretta di alcuni problemi iniziati con la seconda rivoluzione industriale…",
         ";",
         //#DOMANDA 1,2
         "Francesco;Oggi finalmente inizia la mia vita in città, ero proprio stanco del lavoro in campagna ma ora tutto sarà diverso finalmente il futuro. Oh un altro lavoratore credo che andrò a socializzare", //3
@@ -58,14 +58,13 @@ public static class DialoghiLivello1
         "Francesco;Credo che non riuscirò a farti cambiare idea,beviamo qualcosa?",
         "Luca;Ecco ora hai detto una cosa sensata",
         //#DOMANDA 7,8
-        "Gianni;Hey Francesco come va è un po che non ci si vede eh?",
-        "Francesco;Ciao Gianni in effetti sì qui i turni sono così massacranti che anche lavorando vicini non si riesce a fare quattro chiacchiere",
-        "Gianni;Hai pienamente ragione purtroppo che mansione svolgerai oggi?",
-        "Francesco;Devo sistemare alcuni tubi a quanto pare c’è stato un guasto",
-        "Gianni;Capisco beh cerca di divertirti ci vediamo dopo al bar",
-        "Francesco;Sicuramente",
-        //*MINIGIOCO*
-        "Francesco;Le strade sono piene degli escrementi dei cavalli di quel maledetto del mio capo senza contare che l’acqua dei fiumi ormai a causa dei rifiuti che questa industria ci smaltisce non si può più usare nè per lavarsi né tanto meno per bene credo che andrò a parlargli del resto lavoro qui da oltre 2 anni non credo sarà un problema se gli faccio notare la cosa",
+        "Perfetto, e anche questo lavoro è sistemato",//48
+        "Gianni Hey Francesco come va è un po che non ci si vede eh?" ,
+        " Francesco Ciao Gianni in effetti sì qui i turni sono così massacranti che anche lavorando vicini non si riesce a fare quattro chiacchiere " ,
+        "Gianni Concordo, in più hai sentito di Luca? ah quanto pare si è rotto una mano lavorando, allora Anselmo l’ha licenziato!" ,
+        "Francesco, Assurdo! Non si può continuare così! Lavoriamo dalla mattina alla sera, in condizione pietose, e il capo non rispetta neanche il fiume! " +
+        "Ormai a causa dei rifiuti che questa industria ci smaltisce non si può più usare nè per lavarsi né tanto meno per bere. E poi le strade! Sono piene di escrementi dei cavalli per il carbone.",
+        "Basta! Andrò a parlargli, del resto lavoro qui da oltre 2 anni non credo sarà un problema se gli faccio notare la cosa",
         //#DOMANDE 9,10
         "Francesco;Buongiorno signor Anselmo posso parlarle un minuto?",
         "Anselmo;Scusa oggi non assumo nessuno",
@@ -112,7 +111,7 @@ public static class DialoghiLivello1
         "Uomo;(sorseggia)", //93
         "Alcolista;(Ha lo sguardo perso nel vuoto)",
         "Barista;Cosa posso darti da bere?"
-        
+
 
     };
 

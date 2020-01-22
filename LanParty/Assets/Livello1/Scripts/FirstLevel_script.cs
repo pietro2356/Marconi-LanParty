@@ -21,7 +21,7 @@ public class FirstLevel_script : Scene_manager
 
 
 
-    private float startingTime;
+    private float startingTime = 0.1f;
     private bool isTutorialAnimation = false;
 
     // Update is called once per frame

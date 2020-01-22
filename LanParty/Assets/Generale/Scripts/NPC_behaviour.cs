@@ -32,9 +32,9 @@ public class NPC_behaviour : MonoBehaviour
         {
             string[] dialogue = new string[sentenceNumber];
 
-            for (int i = firstSentence, count = 0; count < sentenceNumber; i++, count++)
+            for (int i = 0; i < sentenceNumber; i++)
             {
-                dialogue[count] = GC.PrendiDialogo(i);
+                dialogue[i] = GC.PrendiDialogo(firstSentence+i);
             }
 
             hasSpoken = true;
