@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class GesgtioneGriglia : MonoBehaviour
+public class GestioneGriglia : MonoBehaviour
 {
     const byte DIM_X = 11, DIM_Y = 6;
 
@@ -25,8 +25,9 @@ public class GesgtioneGriglia : MonoBehaviour
         set { celleGriglia = value; }
     }
 
-    public static GesgtioneGriglia istanza;
+    public static GestioneGriglia istanza;
 
+    public GameObject pannelloIntermedio;
     public GameObject pannelloFine;
 
     [NonSerialized]
@@ -38,6 +39,7 @@ public class GesgtioneGriglia : MonoBehaviour
 
     public GameObject timer;
 
+    byte schema = 0;
 
     void Awake()
     {
@@ -48,11 +50,16 @@ public class GesgtioneGriglia : MonoBehaviour
 
         SetupGriglia();
 
+        istanza = this;
+
+        inizio();
+    }
+
+    void inizio()
+    {
         modelloUsato = (byte)random.Next(1, Modelli.modelli.Length);
 
         GeneraPezzi(Modelli.modelli[modelloUsato].Schema);
-
-        istanza = this;
 
         giocoAttivo = true;
 
@@ -96,6 +103,13 @@ public class GesgtioneGriglia : MonoBehaviour
 
     void GeneraPezzi(byte[,] disposizione)
     {
+        foreach (var cella in celleGriglia)
+        {
+            Destroy(cella.pezzoInterno);
+            cella.pezzoInterno = null;
+            cella.pezzoInterno = null;
+        }
+
         for (int x = 0; x < DIM_X; x++)
         {
             for (int y = 0; y < DIM_Y; y++)
@@ -138,7 +152,14 @@ public class GesgtioneGriglia : MonoBehaviour
     {
         if (controllaPercorso())
         {
-            pannelloFine.SetActive(true);
+            if (schema == 0)
+            {
+                pannelloIntermedio.SetActive(true);
+            }
+            else
+            {
+                pannelloFine.SetActive(true);
+            }
             giocoAttivo = false;
         }
     }
@@ -176,6 +197,13 @@ public class GesgtioneGriglia : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void InizioIntermedio()
+    {
+        pannelloIntermedio.SetActive(false);
+        schema++;
+        inizio();
     }
 }
 

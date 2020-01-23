@@ -34,7 +34,7 @@ public class GestoreComunicazione : MonoBehaviour
         {
             IniziaConnessione();
 
-            CambiaLivello(1);
+            //CambiaLivello(1);
         }
     }
 
@@ -53,7 +53,7 @@ public class GestoreComunicazione : MonoBehaviour
         }
     }
 
-    void CambiaLivello(int livello)
+    public void CambiaLivello(int livello)
     {
         connessione.MessaggioTx("FINELIVELLO$");
         this.livello = livello;
@@ -69,6 +69,26 @@ public class GestoreComunicazione : MonoBehaviour
         }
     }
 
+    public void CambiaLivelloSoloDebug(int nlivelli)
+    {
+        livello = nlivelli;
+        for (byte i = 0; i < nlivelli; i++)
+        {
+            connessione.MessaggioTx("FINELIVELLO$");
+            
+            for (byte j = 0; j < 1;)
+            {
+                string mess = connessione.Ricezione();
+                if (mess == "INIZIOLIVELLO$")
+                {
+                    j++;
+                }
+            }
+        }
+        Debug.Log("AvvioLivello " + livello);
+        Gestore_Gioco.CambiaScena(livello);
+    }
+
     public string PrendiDialogo(int riga)
     {
         switch (livello)
@@ -81,7 +101,7 @@ public class GestoreComunicazione : MonoBehaviour
         
     }
 
-    Domanda RichiediDomanda()
+    public Domanda RichiediDomanda()
     {
         connessione.MessaggioTx("DOMANDA$");
         for (byte i = 0; i < 1;)
@@ -95,7 +115,7 @@ public class GestoreComunicazione : MonoBehaviour
         return null;
     }
 
-    int RispostaDomanda(int numeroRisposta)
+    public int RispostaDomanda(int numeroRisposta)
     {
         connessione.MessaggioTx("RISPOSTA$" + numeroRisposta);
         for (byte i = 0; i < 1;)
@@ -109,7 +129,7 @@ public class GestoreComunicazione : MonoBehaviour
         return 0;
     }
 
-    void FineMinigioco(int punteggio)
+    public void FineMinigioco(int punteggio)
     {
         connessione.MessaggioTx("FINEMINIGIOCO$" + punteggio);
     }
@@ -126,35 +146,6 @@ public class GestoreComunicazione : MonoBehaviour
                 i++;
             }
         }
-    }
-
-    void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Gestiore_Gioco.CambiaScena(1);
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    CambiaLivello(0);
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    Domanda buffer = RichiediDomanda();
-        //    Debug.Log(buffer.Testo + "\n" + buffer.Risposta1 + "\n" + buffer.Risposta2 + "\n" + buffer.Risposta3 + "\n" + buffer.Risposta4);
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    Debug.Log(RispostaDomanda(1));
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-        //    FineMinigioco(50);
-        //}
     }
 }
 

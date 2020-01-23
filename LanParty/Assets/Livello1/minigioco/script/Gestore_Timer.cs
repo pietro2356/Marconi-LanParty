@@ -25,7 +25,7 @@ public class Gestore_Timer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (attivo && GesgtioneGriglia.istanza.giocoAttivo)
+        if (attivo && GestioneGriglia.istanza.giocoAttivo)
         {
             orarioPartenza++;
             int secondi = orarioPartenza % 60;
