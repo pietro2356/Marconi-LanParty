@@ -8,8 +8,15 @@ public class NPC_behaviour : MonoBehaviour
     public int firstSentence,
         sentenceNumber;
 
-    private Gestore_File GF = new Gestore_File();
+    private GestoreComunicazione GC;
+    private bool hasSpoken = false;
     // Start is called before the first frame update
+
+    private void Start()
+    {
+        GC = GameObject.FindGameObjectsWithTag("GestoreGioco")[0].GetComponent<GestoreComunicazione>();
+    }
+
     public void TriggerDialogue()
     {
         Dialog_Manager DM = FindObjectOfType<Dialog_Manager>();
@@ -21,15 +28,16 @@ public class NPC_behaviour : MonoBehaviour
             
         if (DM.inDialog)
             DM.DisplayNextSentence();
-        else
+        else if(!hasSpoken)
         {
             string[] dialogue = new string[sentenceNumber];
 
-            for (int i = firstSentence, count = 0; count < sentenceNumber; i++, count++)
+            for (int i = 0; i < sentenceNumber; i++)
             {
-                dialogue[count] = GF.PrendiDialogo(i);
+                dialogue[i] = GC.PrendiDialogo(firstSentence+i);
             }
 
+            hasSpoken = true;
 
             DM.StartDialogue(dialogue);
         }

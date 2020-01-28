@@ -2,51 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstLevel_script : MonoBehaviour
+public class FirstLevel_script : Scene_manager
 {
-    Player_movement pm;
 
-    private int eventLoader = -2;
 
-    public Rigidbody2D player;
     public GameObject gate,
         NPC_Luca,
         NPC_Dario;
     public Camera_Behaviour mainCamera;
-    public Transform 
-        roofDoor,
-        movingPlatform;
+    public Transform
+        roofDoor_bookmark,
+        movingPlatform_bookmark,
+        lever1_bookmark,
+        lever2_bookmark,
+        roof_bookmark;
     public Lever_behaviour lever1,
         lever2;
-    public GameObject nextScene;
-
-    public bool stopped = false;
 
 
-    private float startingTime;
-    private bool firstTime = true;
-    private Dialog_Manager DM;
-    private Gestore_File GF = new Gestore_File();
 
-    void Start()
-    {
-        pm = FindObjectOfType<Player_movement>();
-        DM = FindObjectOfType<Dialog_Manager>();
-        stopped = true;
-    }
+    private float startingTime = 0.1f;
+    private bool isTutorialAnimation = false;
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stopped);
-
         eventHandler();
 
         if (lever1.isMoving)
-            cameraHandler(roofDoor, lever1);
+            cameraHandler(roofDoor_bookmark, lever1);
 
         if (lever2.isMoving)
-            cameraHandler(movingPlatform, lever2);
+            cameraHandler(movingPlatform_bookmark, lever2);
     }
 
     void initialScene()
@@ -54,17 +41,13 @@ public class FirstLevel_script : MonoBehaviour
         player.transform.position = new Vector3(player.position.x + 0.03f, player.position.y);
     }
 
-    public void TriggerEvent()
-    {
-        eventLoader++;
-        Debug.Log(eventLoader);
-
-    }
-
     void eventHandler()
     {
         switch (eventLoader)
         {
+            case -3:
+                StartAnimation();
+                break;
             case -2:
                 introduction();
                 break;
@@ -97,22 +80,27 @@ public class FirstLevel_script : MonoBehaviour
                 if (NPC_Dario != null)
                 {
                     NPC_Dario.tag = "Untagged";
-                    if (NPC_Dario.transform.position.x > 30)
+                    if (NPC_Dario.transform.position.x > 20)
                         NPC_Dario.transform.position = new Vector3(NPC_Dario.transform.position.x - 0.3f, NPC_Dario.transform.position.y);
                     else
+                    {
                         Destroy(NPC_Dario);
+                        isTutorialAnimation = true;
+                    }
+                }
+                if (NPC_Dario == null && isTutorialAnimation)
+                {
+                    tutorialAnimation();
                 }
                 break;
             case 3:
-                Gestiore_Gioco GG = new Gestiore_Gioco();
-                GG.CambiaScena(2);
+                LoadNextScene();
                 break;
         }
     }
 
     void cameraHandler(Transform target, Lever_behaviour lever)
     {
-        Debug.Log(" time" + (Time.time - startingTime));
 
         if (startingTime == 0)
         {
@@ -133,6 +121,34 @@ public class FirstLevel_script : MonoBehaviour
         }
     }
 
+    void tutorialAnimation()
+    {
+        if (startingTime == 0)
+        {
+            stopped = true;
+            startingTime = Time.time;
+
+        }
+        else if (Time.time - startingTime < 2)
+        {
+            mainCamera.target = roof_bookmark;
+        }
+        else if (Time.time - startingTime > 2 && Time.time - startingTime < 4)
+        {
+            mainCamera.target = lever2_bookmark;
+        }
+        else if (Time.time - startingTime > 4 && Time.time - startingTime < 6)
+        {
+            mainCamera.target = lever1_bookmark;
+        }
+        else
+        {
+            stopped = false;
+            isTutorialAnimation = false;
+            mainCamera.target = player.GetComponentInParent<Transform>();
+        }
+    }
+
     void introduction()
     {
         if (DM.inDialog)
@@ -148,7 +164,7 @@ public class FirstLevel_script : MonoBehaviour
                 string[] dialogue = new string[5];
                 for (int i = 0; i < 5; i++)
                 {
-                    dialogue[i] = GF.PrendiDialogo(i);
+                    dialogue[i] = GC.PrendiDialogo(i);
                 }
                 DM.StartDialogue(dialogue);
                 firstTime = false;

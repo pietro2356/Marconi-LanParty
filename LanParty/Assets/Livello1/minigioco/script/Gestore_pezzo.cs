@@ -8,10 +8,10 @@ public class Gestore_pezzo : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (GesgtioneGriglia.istanza.giocoAttivo)
+        if (GestioneGriglia.istanza.giocoAttivo)
         {
             Ruota();
-            GesgtioneGriglia.istanza.ControllaVincita();
+            GestioneGriglia.istanza.ControllaVincita();
         }
     }
 
