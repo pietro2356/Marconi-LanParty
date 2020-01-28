@@ -1395,7 +1395,7 @@ PrefabInstance:
     - target: {fileID: 3683053594772685108, guid: 7bb248790b38e134181576d4433c770c,
         type: 3}
       propertyPath: firstSentence
-      value: 57
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 3683053594772685108, guid: 7bb248790b38e134181576d4433c770c,
         type: 3}
@@ -1729,7 +1729,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3683053594772685108, guid: 7bb248790b38e134181576d4433c770c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bb248790b38e134181576d4433c770c, type: 3}
 --- !u!4 &582544899 stripped
 Transform:
@@ -5696,7 +5697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484390610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.32, y: 0, z: -10}
+  m_LocalPosition: {x: 28.7, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5716,7 +5717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1447383616}
   offset: {x: 0, y: 0, z: -10}
-  leftLimit: 29.19
+  leftLimit: 28.7
   rightLimit: 56
   topLimit: 16.1
   bottomLimit: 0
@@ -5820,10 +5821,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1034654737}
-  stopped: 1
+  stopped: 0
   nextScene: 0
   animator: {fileID: 1539478181}
-  NPC_Gianni: {fileID: 0}
+  NPC_Gianni: {fileID: 1609498389}
 --- !u!1 &1550529704
 GameObject:
   m_ObjectHideFlags: 0
@@ -6049,7 +6050,7 @@ PrefabInstance:
     - target: {fileID: 3399838720353025485, guid: 7bb248790b38e134181576d4433c770c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26
+      value: 39.83
       objectReference: {fileID: 0}
     - target: {fileID: 3399838720353025485, guid: 7bb248790b38e134181576d4433c770c,
         type: 3}

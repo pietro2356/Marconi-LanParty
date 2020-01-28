@@ -20,12 +20,14 @@ public class FirstLevel_Dawn_script : Scene_manager
             case -3:
                 StartAnimation();
                 break;
-            case 2:
+            case -2:
                 if (DM.inDialog)
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
+                    {
                         DM.DisplayNextSentence();
-                    eventLoader++;
+                        eventLoader++;
+                    }
                 }
                 else
                 {
@@ -51,7 +53,7 @@ public class FirstLevel_Dawn_script : Scene_manager
             case 0:
                 introduction();
                 break;
-            case 1:
+            case 2:
                 LoadNextScene();
                 break;
 
@@ -61,7 +63,7 @@ public class FirstLevel_Dawn_script : Scene_manager
 
     void initialScene()
     {
-        NPC_Gianni.position = new Vector3(NPC_Gianni.position.x - 0.03f, NPC_Gianni.position.y);
+        NPC_Gianni.position = new Vector3(NPC_Gianni.position.x - 0.1f, NPC_Gianni.position.y);
     }
 
     void introduction()
@@ -75,9 +77,9 @@ public class FirstLevel_Dawn_script : Scene_manager
         {
             if (firstTime)
             {
-                string[] dialogue = new string[4];
+                string[] dialogue = new string[5];
 
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     dialogue[i] = GC.PrendiDialogo(49+i);
                 }

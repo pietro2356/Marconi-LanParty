@@ -25,6 +25,12 @@ public class Scene_manager : MonoBehaviour
         GC = GameObject.FindGameObjectsWithTag("GestoreGioco")[0].GetComponent<GestoreComunicazione>();
     }
 
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+            eventLoader++;  
+    }
+
     public void TriggerEvent()
     {
         eventLoader++;

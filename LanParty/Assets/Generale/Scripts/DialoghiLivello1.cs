@@ -58,13 +58,13 @@ public static class DialoghiLivello1
         "Francesco;Credo che non riuscirò a farti cambiare idea,beviamo qualcosa?",
         "Luca;Ecco ora hai detto una cosa sensata",
         //#DOMANDA 7,8
-        "Perfetto, e anche questo lavoro è sistemato",//48
-        "Gianni Hey Francesco come va è un po che non ci si vede eh?" ,
-        " Francesco Ciao Gianni in effetti sì qui i turni sono così massacranti che anche lavorando vicini non si riesce a fare quattro chiacchiere " ,
-        "Gianni Concordo, in più hai sentito di Luca? ah quanto pare si è rotto una mano lavorando, allora Anselmo l’ha licenziato!" ,
-        "Francesco, Assurdo! Non si può continuare così! Lavoriamo dalla mattina alla sera, in condizione pietose, e il capo non rispetta neanche il fiume! " +
+        "Francesco;Perfetto, e anche questo lavoro è sistemato",//48
+        "Gianni;Hey Francesco come va è un po che non ci si vede eh?" ,
+        "Francesco;Ciao Gianni in effetti sì qui i turni sono così massacranti che anche lavorando vicini non si riesce a fare quattro chiacchiere " ,
+        "Gianni;Concordo, in più hai sentito di Luca? ah quanto pare si è rotto una mano lavorando, allora Anselmo l’ha licenziato!" ,
+        "Francesco; Assurdo! Non si può continuare così! Lavoriamo dalla mattina alla sera, in condizione pietose, e il capo non rispetta neanche il fiume! " +
         "Ormai a causa dei rifiuti che questa industria ci smaltisce non si può più usare nè per lavarsi né tanto meno per bere. E poi le strade! Sono piene di escrementi dei cavalli per il carbone.",
-        "Basta! Andrò a parlargli, del resto lavoro qui da oltre 2 anni non credo sarà un problema se gli faccio notare la cosa",
+        "Francesco; Basta! Andrò a parlargli, del resto lavoro qui da oltre 2 anni non credo sarà un problema se gli faccio notare la cosa",
         //#DOMANDE 9,10
         "Francesco;Buongiorno signor Anselmo posso parlarle un minuto?",
         "Anselmo;Scusa oggi non assumo nessuno",

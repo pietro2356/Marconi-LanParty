@@ -21,7 +21,7 @@ public class FirstLevel_script : Scene_manager
 
 
 
-    private float startingTime = 0.1f;
+    private float startingTime = 0;
     private bool isTutorialAnimation = false;
 
     // Update is called once per frame
@@ -101,7 +101,6 @@ public class FirstLevel_script : Scene_manager
 
     void cameraHandler(Transform target, Lever_behaviour lever)
     {
-
         if (startingTime == 0)
         {
             stopped = true;
@@ -146,6 +145,7 @@ public class FirstLevel_script : Scene_manager
             stopped = false;
             isTutorialAnimation = false;
             mainCamera.target = player.GetComponentInParent<Transform>();
+            startingTime = 0;
         }
     }
 

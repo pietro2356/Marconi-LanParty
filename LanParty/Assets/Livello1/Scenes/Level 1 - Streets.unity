@@ -265,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 3683053594772685108, guid: 7bb248790b38e134181576d4433c770c,
         type: 3}
       propertyPath: firstSentence
-      value: 95
+      value: 94
       objectReference: {fileID: 0}
     - target: {fileID: 3683053594772685108, guid: 7bb248790b38e134181576d4433c770c,
         type: 3}
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrigger: 0
-  firstSentence: 94
+  firstSentence: 93
   sentenceNumber: 1
 --- !u!1001 &1209390419
 PrefabInstance:
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2135746361}
   stopped: 1
-  nextScene: 3
+  nextScene: 4
   animator: {fileID: 666067082}
 --- !u!1 &1271398335
 GameObject:
@@ -1348,7 +1348,7 @@ PrefabInstance:
     - target: {fileID: 3683053594772685108, guid: 7bb248790b38e134181576d4433c770c,
         type: 3}
       propertyPath: firstSentence
-      value: 93
+      value: 92
       objectReference: {fileID: 0}
     - target: {fileID: 3683053594772685108, guid: 7bb248790b38e134181576d4433c770c,
         type: 3}
