@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class elevator_behaviour : MonoBehaviour
 {
-    public float first_floor,
-        second_floor,
-        third_floor;
+    public List<float> floors;
+    
 
     private Transform original_position;
     private float initial_time;
+    private int actualFloor = 0;
     private void Start()
     {
+        floors.Add(0);
         original_position = transform;
     }
 
     private void Update()
     {
-        
-        MoveElevator(first_floor);
+        MoveElevator(actualFloor);
+
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
 
-        Gizmos.DrawLine(new Vector2(transform.position.x - 1, transform.position.y + first_floor), new Vector2(transform.position.x + 1, transform.position.y + first_floor));
-        Gizmos.DrawLine(new Vector2(transform.position.x - 1, transform.position.y + second_floor), new Vector2(transform.position.x + 1, transform.position.y + second_floor));
-        Gizmos.DrawLine(new Vector2(transform.position.x - 1, transform.position.y + third_floor), new Vector2(transform.position.x + 1, transform.position.y + third_floor));
+        foreach (var singleFloor in floors)
+        {
+            Gizmos.DrawLine(new Vector2(transform.position.x - 1, transform.position.y + singleFloor), new Vector2(transform.position.x + 1, transform.position.y + singleFloor));
+        }
 
     }
 
@@ -46,6 +48,7 @@ public class elevator_behaviour : MonoBehaviour
         else
         {
             initial_time = 0;
+            actualFloor++;
         }
     }
 }

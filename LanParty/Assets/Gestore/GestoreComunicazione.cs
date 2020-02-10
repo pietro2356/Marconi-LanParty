@@ -8,7 +8,7 @@ using System.Net;
 public class GestoreComunicazione : MonoBehaviour
 {
     ConnPermanenteSync connessione;
-    int[] sceneiniziali = { 1 };
+    int[] sceneiniziali = { 1, 5 };
     int livello = 0;
 
     void Start()
