@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Tutorial/Tutorial.unity
+=======
+- path: Assets/Livello1/Scenes/Level 1 - Streets.unity
+>>>>>>> 04f6acff07778b9dd849f7d900a92ced186de6c3
   isLoaded: 1
   isActive: 1
   isSubScene: 0
