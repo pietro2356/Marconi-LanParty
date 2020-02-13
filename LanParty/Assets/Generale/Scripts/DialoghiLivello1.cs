@@ -111,16 +111,5 @@ public static class DialoghiLivello1
         "Uomo;(sorseggia)", //93
         "Alcolista;(Ha lo sguardo perso nel vuoto)",
         "Barista;Cosa posso darti da bere?"
-
-
-    };
-
-    public static string[] domande = new string[] {
-        "Quando è stato il periodo in cui è avvenuta la Seconda Rivoluzione Industriale?;1800-1850;1850-1900;1750-1800;1700-1750",
-        "Come venivano smaltiti i rifiuti chimici prodotto dalle industrie?;Gettati nei fiumi vicini;Trattamento in strutture apposite;Stoccaggio in zone protette;Riutilizzo dei materiali utili per la creazione di altri prodotti",
-        "Quale era il tasso nazionale italiano di analfabetismo nei primi del 1900?;2%;94%;56%;37%",
-        "Quanta acqua che si trova in natura si può bere tranquillamente?;95%;60%;35%;1%",
-        "Da quale paese origina la rivoluzione?;Germania;Inghilterra;Italia;Stati Uniti",
-        "Quale tipo di motore fu inventato in questi anni?;Il motore a scoppio;Il motore a dinamite;il motore a molla;Il motore a getto"
     };
 }

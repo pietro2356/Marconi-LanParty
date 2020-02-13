@@ -94,7 +94,11 @@ public class GestoreComunicazione : MonoBehaviour
     {
         switch (livello)
         {
+            case 0:
+                return DialoghiLivello0.dialoghi[riga];
             case 1:
+                return DialoghiLivello1.dialoghi[riga];
+            case 2:
                 return DialoghiLivello1.dialoghi[riga];
             default:
                 return ";";
