@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Gestore/scenaIniziale.unity
     guid: ca5b4ec60d14b294dbd98f1282291899
   - enabled: 1
-    path: Assets/Tutorial/Tutorial.unity
+    path: Assets/Tutorial/Scenes/Tutorial.unity
     guid: 9e1aedbe597347d41af88c7868727ad9
   - enabled: 1
     path: Assets/Livello_1/Scenes/Level 1 - factory.unity

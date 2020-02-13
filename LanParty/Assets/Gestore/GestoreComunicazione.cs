@@ -97,7 +97,7 @@ public class GestoreComunicazione : MonoBehaviour
             case 1:
                 return DialoghiLivello1.dialoghi[riga];
             default:
-                return "";
+                return ";";
         }
         
     }

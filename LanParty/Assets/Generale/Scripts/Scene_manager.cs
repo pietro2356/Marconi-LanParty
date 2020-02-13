@@ -8,7 +8,7 @@ public class Scene_manager : MonoBehaviour
     public Rigidbody2D player;
     public bool stopped = true;
     public int nextScene;
-    public Animator animator;
+    
 
 
 
@@ -17,11 +17,13 @@ public class Scene_manager : MonoBehaviour
     protected Dialog_Manager DM;
     protected GestoreComunicazione GC;
     protected bool firstTime = true;
+    private Animator fader;
 
     private void Start()
     {
-        pm = FindObjectOfType<Player_movement>();
         DM = FindObjectOfType<Dialog_Manager>();
+        pm = FindObjectOfType<Player_movement>();
+        fader = GetComponent<Animator>();
         GC = GameObject.FindGameObjectsWithTag("GestoreGioco")[0].GetComponent<GestoreComunicazione>();
     }
 
@@ -49,7 +51,7 @@ public class Scene_manager : MonoBehaviour
 
     IEnumerator LoadScene(int scene)
     {
-        animator.SetTrigger("Start");
+        fader.SetTrigger("Start");
 
         yield return new WaitForSeconds(1);
 

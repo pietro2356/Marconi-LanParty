@@ -6,7 +6,6 @@ public class FirstLevel_Dawn_script : Scene_manager
 {
     public Transform NPC_Gianni;
 
-    private bool isThinking = true;
 
     private void Update()
     {
