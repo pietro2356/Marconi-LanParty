@@ -24,7 +24,7 @@ public static class DialoghiLivello2
         "Receptioner;e tu chi sei? da quanto sei li?",
         "Protagonista;Abbastanza da farti licenziare, ma sono qui per altro. Mi presento sono Protagonista, e sono qui per intervistare il signor Biagi per il  corriere della sera.",
         "Receptioner;Il suo ufficio è al 4° piano, in fondo sulla destra e per favore non dica nulla riguardo alla partita.",
-        "Protagonista;Stia tranquillo, prima di entrare stavo esultando per il goal di Pirlo."
+        "Protagonista;Stia tranquillo, prima di entrare stavo esultando per il goal di Pirlo.",
         //#DOMANDE 2
         "Protagonista;Buongiorno signor Biagi, sono Protagonista, e sono qui per l’intervista che avevamo fissato.",
         "Biagi;La stavo aspettando, si accomodi.",
