@@ -36,7 +36,7 @@ public class FirstLevel_Streets_script : Scene_manager
                 LoadNextScene();
                 break;
 
-            
+
         }
     }
 
@@ -49,23 +49,19 @@ public class FirstLevel_Streets_script : Scene_manager
     {
         if (DM.inDialog)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.E))
                 DM.DisplayNextSentence();
         }
         else
         {
 
-            if (firstTime)
-            {
-                string[] dialogue = new string[1];
-                
-                    dialogue[0] = GC.PrendiDialogo(38);
-                
-                DM.StartDialogue(dialogue);
-                firstTime = false;
-            }
-            else
-                eventLoader++;
+            DM.isTrigger = true;
+            string[] dialogue = new string[1];
+
+            dialogue[0] = GC.PrendiDialogo(38);
+
+            DM.StartDialogue(dialogue);
+
         }
     }
 }

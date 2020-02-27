@@ -22,7 +22,7 @@ public class FirstLevel_Dawn_script : Scene_manager
             case -2:
                 if (DM.inDialog)
                 {
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
                         DM.DisplayNextSentence();
                         eventLoader++;
@@ -69,26 +69,22 @@ public class FirstLevel_Dawn_script : Scene_manager
     {
         if (DM.inDialog)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.E))
                 DM.DisplayNextSentence();
         }
         else
         {
-            if (firstTime)
+            DM.isTrigger = true;
+            string[] dialogue = new string[5];
+
+            for (int i = 0; i < 5; i++)
             {
-                string[] dialogue = new string[5];
-
-                for (int i = 0; i < 5; i++)
-                {
-                    dialogue[i] = GC.PrendiDialogo(49+i);
-                }
-                
-
-                DM.StartDialogue(dialogue);
-                firstTime = false;
+                dialogue[i] = GC.PrendiDialogo(49 + i);
             }
-            else
-                eventLoader++;
+
+
+            DM.StartDialogue(dialogue);
+
         }
     }
 }

@@ -16,7 +16,6 @@ public class Scene_manager : MonoBehaviour
     protected int eventLoader = -3;
     protected Dialog_Manager DM;
     protected GestoreComunicazione GC;
-    protected bool firstTime = true;
     private Animator fader;
 
     private void Start()
@@ -29,7 +28,7 @@ public class Scene_manager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.U))
             eventLoader++;  
     }
 
@@ -56,6 +55,8 @@ public class Scene_manager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         SceneManager.LoadScene(scene);
+
+        
     }
 
     IEnumerator BeginScene()

@@ -40,12 +40,12 @@ public class Player_interaction : MonoBehaviour
 
         if (entity != null)
         {
-            if (entity.name.StartsWith("NPC") && Input.GetKeyDown(KeyCode.Space))
+            if (entity.name.StartsWith("NPC") && Input.GetKeyDown(KeyCode.E))
             {
                 entity.GetComponent<SpriteRenderer>().color = Color.green;
                 entity.GetComponent<NPC_behaviour>().TriggerDialogue();
             }
-            else if (entity.name.StartsWith("lever") && Input.GetKeyDown(KeyCode.Space))
+            else if (entity.name.StartsWith("lever") && Input.GetKeyDown(KeyCode.E))
             {
                 if (!entity.GetComponent<Lever_behaviour>().isMoving)
                 {

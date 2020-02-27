@@ -153,24 +153,20 @@ public class FirstLevel_script : Scene_manager
     {
         if (DM.inDialog)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+
+            if (Input.GetKeyDown(KeyCode.E))
                 DM.DisplayNextSentence();
         }
         else
         {
+            DM.isTrigger = true;
 
-            if (firstTime)
+            string[] dialogue = new string[5];
+            for (int i = 0; i < 5; i++)
             {
-                string[] dialogue = new string[5];
-                for (int i = 0; i < 5; i++)
-                {
-                    dialogue[i] = GC.PrendiDialogo(i);
-                }
-                DM.StartDialogue(dialogue);
-                firstTime = false;
+                dialogue[i] = GC.PrendiDialogo(i);
             }
-            else
-                eventLoader++;
+            DM.StartDialogue(dialogue);
         }
     }
 }

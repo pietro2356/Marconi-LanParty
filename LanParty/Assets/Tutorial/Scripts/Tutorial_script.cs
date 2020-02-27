@@ -20,17 +20,21 @@ public class Tutorial_script : Scene_manager
             case -2:
                 if (DM.inDialog)
                 {
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
                         DM.DisplayNextSentence();
-                        eventLoader++;
                     }
                 }
                 else
                 {
-                    string[] dialogue = new string[1];
+                    DM.isTrigger = true;
 
-                    dialogue[0] = "test;test";
+                    string[] dialogue = new string[2];
+
+                    for (int i = 0; i < 2; i++)
+                    {
+                        dialogue[i] = GC.PrendiDialogo(i);
+                    }
 
                     DM.StartDialogue(dialogue);
                 }
