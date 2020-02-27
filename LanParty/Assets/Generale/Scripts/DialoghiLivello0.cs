@@ -5,6 +5,16 @@ using UnityEngine;
 public static class DialoghiLivello0
 {
     public static string[] dialoghi = new string[] {
+        "Bambino;Chissà che succede…",
+        "Bambino;Chiederò a qualcuno qui intorno.",
+        "Bambino;Scusi signore..",
+        "Passeggero;Non ora, ho da fare.",
+        "Bambino;Scusi signore..",
+        "Passeggero;Non ora, sto pensando a cosa faremo quando saremo arrivati va a giocare altrove.",
+        "Bambino;Scusi signore..",
+        "Passeggero;Si ti scuso per avermi interrotto mentre stavo pensando, va via!",
+        "Capitano;Hey ragazzino,vatti a sedere al tuo posto.",
+        "Bambino;OK,allora vediamo il mio posto è il 17",
         "Protagonista;È assurdo che stiamo per partire veramente dopo così tanto tempo. Questo pianeta abbiamo preferito abbandonarlo piuttosto che provare a salvarlo…",
         "Bambino;Scusi signore, lei sa cosa sta succedendo?",
         "Protagonista;Tu no?",
