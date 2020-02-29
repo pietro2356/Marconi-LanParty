@@ -20,11 +20,13 @@ public class Tutorial_script : Scene_manager
             case -3:
                 camera.isFixed = true;
                 StartAnimation();
-                camera.transform.position = new Vector3(player.position.x - 30, player.position.y, camera.offset.z);
                 break;
             case -2:
-                if (10 - Time.time > 0)
-                    camera.transform.position = new Vector3(player.position.x - (10 - Time.time) * 3, player.position.y, camera.offset.z);
+                if (3 - Time.time > 0)
+                {
+                    if(Time.frameCount % 3 == 0)
+                    camera.transform.position = new Vector3(player.position.x + (Random.Range(-0.3f, 0.3f)), player.position.y + (Random.Range(-0.3f, 0.3f)), camera.offset.z);
+                }
                 else
                 {
                     eventLoader++;

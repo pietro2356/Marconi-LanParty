@@ -5,7 +5,7 @@ using UnityEngine;
 public static class DialoghiLivello0
 {
     public static string[] dialoghi = new string[] {
-        "Bambino;Chissà che succede…",
+        "Bambino;Che succede…!?!",
         "Bambino;Chiederò a qualcuno qui intorno.",
         "Bambino;Scusi signore..",
         "Passeggero;Non ora, ho da fare.",
