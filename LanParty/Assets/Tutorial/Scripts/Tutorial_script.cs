@@ -9,7 +9,7 @@ public class Tutorial_script : Scene_manager
     private bool intro = true;
     void Update()
     {
-
+        Debug.Log(eventLoader);
         eventHandler();
     }
 
