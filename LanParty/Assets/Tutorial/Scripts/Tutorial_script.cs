@@ -56,7 +56,7 @@ public class Tutorial_script : Scene_manager
                 }
                 break;
             case 1:
-                LoadNextScene();
+                GC.CambiaLivello(1);
                 break;
         }
     }
