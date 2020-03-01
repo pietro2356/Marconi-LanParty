@@ -7088,6 +7088,7 @@ MonoBehaviour:
   topLimit: 25
   bottomLimit: 0
   speed: 0.125
+  isFixed: 0
 --- !u!1001 &1488180113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8281,12 +8282,6 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 59136995}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1947500556 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5934979204409638557, guid: e019ac55bd3e42b4c91de4551564b8c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 494301815}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1962218996 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 107306798108947093, guid: 3f83a7d88116039418dafc55dc940781,
@@ -8479,8 +8474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1034654737}
   stopped: 1
-  nextScene: 2
-  animator: {fileID: 1947500556}
+  nextScene: 3
   gate: {fileID: 454958546}
   NPC_Luca: {fileID: 859978085}
   NPC_Dario: {fileID: 1609498390}
