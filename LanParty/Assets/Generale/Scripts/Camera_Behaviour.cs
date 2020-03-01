@@ -11,14 +11,17 @@ public class Camera_Behaviour : MonoBehaviour
         topLimit,
         bottomLimit,
         speed;
+    public bool isFixed = false;
 
 
     void FixedUpdate()
     {
-
-        Vector3 targetPosition = target.position + offset;
-        Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, speed);
-        transform.position = new Vector3 (Mathf.Clamp(smoothPosition.x, leftLimit, rightLimit), Mathf.Clamp(smoothPosition.y, bottomLimit, topLimit), smoothPosition.z);
+        if (!isFixed)
+        {
+            Vector3 targetPosition = target.position + offset;
+            Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, speed);
+            transform.position = new Vector3(Mathf.Clamp(smoothPosition.x, leftLimit, rightLimit), Mathf.Clamp(smoothPosition.y, bottomLimit, topLimit), smoothPosition.z);
+        }
     }
 
     void OnDrawGizmos()

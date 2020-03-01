@@ -13,7 +13,11 @@ public class AvvioDebug : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            gestore.CambiaLivelloSoloDebug(0);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             gestore.CambiaLivelloSoloDebug(1);
         }
