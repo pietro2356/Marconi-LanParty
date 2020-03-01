@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class GestioneGriglia : MonoBehaviour
 {
     const byte DIM_X = 11, DIM_Y = 6;
+    const byte maxPunti = 50;
 
     SpriteRenderer g_renderer;
     Transform g_transform;
@@ -29,6 +31,8 @@ public class GestioneGriglia : MonoBehaviour
 
     public GameObject pannelloIntermedio;
     public GameObject pannelloFine;
+    public GameObject ScrittaPunteggio;
+    public GameObject ScrittaTempo;
 
     [NonSerialized]
     public bool giocoAttivo;
@@ -152,6 +156,7 @@ public class GestioneGriglia : MonoBehaviour
     {
         if (controllaPercorso())
         {
+            giocoAttivo = false;
             if (schema == 0)
             {
                 pannelloIntermedio.SetActive(true);
@@ -159,8 +164,16 @@ public class GestioneGriglia : MonoBehaviour
             else
             {
                 pannelloFine.SetActive(true);
+                ScrittaTempo.GetComponent<Text>().text = timer.GetComponent<Gestore_Timer>().testoTimer.text;
+                int punteggio = (int)(((float)timer.GetComponent<Gestore_Timer>().orarioPartenza / (float)200) * (float)maxPunti);
+                punteggio = maxPunti - punteggio;
+                if (punteggio < 0)
+                {
+                    punteggio = 0;
+                }
+                ScrittaPunteggio.GetComponent<Text>().text = punteggio + "/" + maxPunti;
+                GameObject.FindGameObjectsWithTag("GestoreGioco")[0].GetComponent<GestoreComunicazione>().FineMinigioco(punteggio);
             }
-            giocoAttivo = false;
         }
     }
 

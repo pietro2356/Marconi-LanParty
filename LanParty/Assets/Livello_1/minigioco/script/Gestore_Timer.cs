@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class Gestore_Timer : MonoBehaviour
 {
-    Text testoTimer;
+    public Text testoTimer;
 
-    int orarioPartenza;
+    public int orarioPartenza;
     bool attivo = false;
 
     void Start()
