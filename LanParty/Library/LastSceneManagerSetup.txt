@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Livello_1/minigioco/Gioco_Tubi.unity
+- path: Assets/Gestore/scenaIniziale.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

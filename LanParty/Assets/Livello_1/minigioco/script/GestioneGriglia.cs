@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GestioneGriglia : MonoBehaviour
 {
@@ -177,6 +178,10 @@ public class GestioneGriglia : MonoBehaviour
         }
     }
 
+    public void Prosegui()
+    {
+        SceneManager.LoadScene(5);
+    }
 
     public bool controllaPercorso()
     {
