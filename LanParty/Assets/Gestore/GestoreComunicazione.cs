@@ -4,11 +4,12 @@ using UnityEngine;
 using CLComunicazione;
 using System;
 using System.Net;
+using UnityEngine.SceneManagement;
 
 public class GestoreComunicazione : MonoBehaviour
 {
     ConnPermanenteSync connessione;
-    int[] sceneiniziali = { 1 };
+    int[] sceneiniziali = { 1, 2, 6 };
     int livello = 0;
 
     void Start()
@@ -63,7 +64,7 @@ public class GestoreComunicazione : MonoBehaviour
             if (mess == "INIZIOLIVELLO$")
             {
                 Debug.Log("cambioSCena");
-                Gestore_Gioco.CambiaScena(livello);
+                CambiaScenaDaLivello(livello);
                 i++;
             }
         }
@@ -86,17 +87,21 @@ public class GestoreComunicazione : MonoBehaviour
             }
         }
         Debug.Log("AvvioLivello " + livello);
-        Gestore_Gioco.CambiaScena(livello);
+        CambiaScenaDaLivello(livello);
     }
 
     public string PrendiDialogo(int riga)
     {
         switch (livello)
         {
+            case 0:
+                return DialoghiLivello0.dialoghi[riga];
             case 1:
                 return DialoghiLivello1.dialoghi[riga];
+            case 2:
+                return DialoghiLivello2.dialoghi[riga];
             default:
-                return "";
+                return ";";
         }
         
     }
@@ -146,6 +151,11 @@ public class GestoreComunicazione : MonoBehaviour
                 i++;
             }
         }
+    }
+
+    public void CambiaScenaDaLivello(int nlivello)
+    {
+        SceneManager.LoadScene(sceneiniziali[nlivello]);
     }
 }
 
