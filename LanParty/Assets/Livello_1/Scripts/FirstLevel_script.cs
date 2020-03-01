@@ -161,13 +161,16 @@ public class FirstLevel_script : Scene_manager
         {
             DM.isTrigger = true;
 
-            string[] dialogue = new string[5];
+            string[] dialogue = new string[3];
+            int n = 0;
             for (int i = 1; i < 5; i++)
             {
                 if (i != 3)
                 {
-                    dialogue[i] = GC.PrendiDialogo(i);
+                    dialogue[n] = GC.PrendiDialogo(i);
+                    n++;
                 }
+                
             }
             DM.StartDialogue(dialogue);
         }

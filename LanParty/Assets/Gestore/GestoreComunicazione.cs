@@ -5,12 +5,15 @@ using CLComunicazione;
 using System;
 using System.Net;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 public class GestoreComunicazione : MonoBehaviour
 {
     ConnPermanenteSync connessione;
     int[] sceneiniziali = { 1, 2, 6 };
     int livello = 0;
+    byte cambioLivello = 6;
+    Thread ascolto;
 
     void Start()
     {
@@ -58,6 +61,16 @@ public class GestoreComunicazione : MonoBehaviour
     {
         connessione.MessaggioTx("FINELIVELLO$");
         this.livello = livello;
+        SceneManager.LoadScene(cambioLivello);
+
+        ascolto = new Thread(new ParameterizedThreadStart(AscoltoInizioLivello));
+        ascolto.IsBackground = true;
+        //CheckForIllegalCrossThreadCalls = false;
+        ascolto.Start("");
+    }
+
+    public void AscoltoInizioLivello(object ciao)
+    {
         for (byte i = 0; i < 1;)
         {
             string mess = connessione.Ricezione();
