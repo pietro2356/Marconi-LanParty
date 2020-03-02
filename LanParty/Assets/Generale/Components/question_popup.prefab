@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 8293200891018765827}
   - component: {fileID: 1021393715933907237}
   m_Layer: 5
-  m_Name: txtDomanda4
+  m_Name: txtOpzione4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: btnDomanda4
+  m_Text: txtOpzione4
 --- !u!1 &6197664681552294835
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +312,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3853599455525973350}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7061023039572203566
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +415,7 @@ GameObject:
   - component: {fileID: 7061023039828126523}
   - component: {fileID: 7061023039828126522}
   - component: {fileID: 7061023039828126521}
+  - component: {fileID: -7530163977173255498}
   m_Layer: 5
   m_Name: question_popup
   m_TagString: Untagged
@@ -496,6 +508,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-7530163977173255498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061023039828126520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088c1ac9ed8c11d458e56e70ad24d123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7061023040343152928
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +605,7 @@ GameObject:
   - component: {fileID: 391870923840143803}
   - component: {fileID: 4184976405767760444}
   m_Layer: 5
-  m_Name: txtDomanda3
+  m_Name: txtOpzione3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,7 +669,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: btnDomanda3
+  m_Text: txtOpzione3
 --- !u!1 &7559825868257549924
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +800,7 @@ GameObject:
   - component: {fileID: 1357658911730715874}
   - component: {fileID: 5245133062525000198}
   m_Layer: 5
-  m_Name: txtDomanda1
+  m_Name: txtOpzione1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,7 +864,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: btnDomanda1
+  m_Text: txtOpzione1
 --- !u!1 &8290273010774056712
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,7 +877,7 @@ GameObject:
   - component: {fileID: 2907958155531756757}
   - component: {fileID: 533850871255241175}
   m_Layer: 5
-  m_Name: txtDomanda2
+  m_Name: txtOpzione2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -917,7 +941,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: btnDomanda2
+  m_Text: txtOpzione2
 --- !u!1 &8416159924140457318
 GameObject:
   m_ObjectHideFlags: 0
