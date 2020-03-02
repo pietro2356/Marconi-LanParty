@@ -180,7 +180,7 @@ public class GestioneGriglia : MonoBehaviour
 
     public void Prosegui()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(7);
     }
 
     public bool controllaPercorso()

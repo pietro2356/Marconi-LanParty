@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/cambio_Livello/Cambio_livello.unity
     guid: 1ef0c98212c6264438d2179c6864ddf9
+  - enabled: 1
+    path: Assets/provvisoria - fine beta.unity
+    guid: 55dc7d0c03c5e73489a72a1728e549b6
   m_configObjects: {}

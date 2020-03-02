@@ -30,16 +30,25 @@ public class GestoreComunicazione : MonoBehaviour
 
         connessione = new ConnPermanenteSync(server);
 
-        if (argomenti[3] == "true")
+        try
         {
-            ChiamaRiconnessione();
+            if (argomenti[3] == "true")
+            {
+                ChiamaRiconnessione();
+            }
+            else
+            {
+                IniziaConnessione();
+
+                //CambiaLivello(1);
+            }
         }
-        else
+        catch (Exception)
         {
             IniziaConnessione();
-
-            //CambiaLivello(1);
+            throw;
         }
+        
     }
 
     void IniziaConnessione()
@@ -51,7 +60,7 @@ public class GestoreComunicazione : MonoBehaviour
             if (mess == "INIZIO$")
             {
                 Debug.Log("inizio");
-                //Gestiore_Gioco.CambiaScena(1);
+                CambiaScenaDaLivello(0);
                 i++;
             }
         }

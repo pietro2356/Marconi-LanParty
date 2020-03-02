@@ -50,16 +50,23 @@ public class Player_movement : MonoBehaviour
 
         if (!level.stopped)
         {
-
             movement = Input.GetAxisRaw("Horizontal");
-            if (movement < -0.1 || movement > 0.1)
-                animator.SetBool("moving", true);
-            else
-                animator.SetBool("moving", false);
+            try
+            {
+                if (movement < -0.1 || movement > 0.1)
+                    animator.SetBool("moving", true);
+                else
+                    animator.SetBool("moving", false);
 
+                
+
+                Debug.Log(movement + "-" + animator.speed + "-" + rb.velocity);
+            }
+            catch (System.Exception)
+            {
+            }
             rb.velocity = new Vector2(movement * movementVelocity, rb.velocity.y);
 
-            Debug.Log(movement + "-" + animator.speed + "-" + rb.velocity);
 
             if (movement > 0)
                 facingRight = true;
