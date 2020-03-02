@@ -18,6 +18,7 @@ public class Dialog_Manager : MonoBehaviour
     private Domanda domanda;
     private GestoreComunicazione gestoreComunicazione;
     private Text[] datiForm;
+    private GameObject popUpDomande;
 
     void Start()
     {
@@ -29,7 +30,6 @@ public class Dialog_Manager : MonoBehaviour
 
     public void StartDialogue(string[] dialogue)
     {
-        RichiestaDomanda();
         level.stopped = true;
 
         popUp = Instantiate(sentencePreFab) as GameObject;
@@ -97,7 +97,7 @@ public class Dialog_Manager : MonoBehaviour
     {
         level.stopped = true;
 
-        popUp = Instantiate(questionPreFab) as GameObject;
+        popUpDomande = Instantiate(questionPreFab) as GameObject;
 
         domanda = gestoreComunicazione.RichiediDomanda();
 
@@ -109,6 +109,14 @@ public class Dialog_Manager : MonoBehaviour
         datiForm[2].text = domanda.Risposta2;
         datiForm[3].text = domanda.Risposta3;
         datiForm[4].text = domanda.Risposta4;
+    }
+
+    public void Risposta(int numeroRisposta)
+    {
+        gestoreComunicazione.RispostaDomanda(numeroRisposta);
+        level.stopped = false;
+        Destroy(popUpDomande);
+        Debug.Log("Risposta iniviata --> "+numeroRisposta);
     }
 
     void Update()
