@@ -21,6 +21,8 @@ public class Player_movement : MonoBehaviour
 
     public bool onLadder = false,
         facingRight;
+
+    public Animator animator;
         
 
     private bool isGrounded()
@@ -43,10 +45,16 @@ public class Player_movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!level.stopped)
         {
+
             movement = Input.GetAxisRaw("Horizontal");
+            animator.speed = Mathf.Abs(movement);
+            
             rb.velocity = new Vector2(movement * movementVelocity, rb.velocity.y);
+
+            Debug.Log(movement + "-" + animator.speed + "-" + rb.velocity);
 
             if (movement > 0)
                 facingRight = true;
