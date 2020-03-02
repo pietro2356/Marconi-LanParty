@@ -8,6 +8,8 @@ public class Player_movement : MonoBehaviour
     CircleCollider2D circleCollider;
     Scene_manager level;
     Dialog_Manager dm;
+    Animator animator;
+
     private float movement = 0f;
     [SerializeField] private LayerMask layer;
     private float originalGravity,
@@ -22,7 +24,6 @@ public class Player_movement : MonoBehaviour
     public bool onLadder = false,
         facingRight;
 
-    public Animator animator;
         
 
     private bool isGrounded()
@@ -40,6 +41,7 @@ public class Player_movement : MonoBehaviour
         originalGravity = rb.gravityScale;
         level = FindObjectOfType<Scene_manager>();
         dm = FindObjectOfType<Dialog_Manager>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
