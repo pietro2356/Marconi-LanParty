@@ -52,8 +52,11 @@ public class Player_movement : MonoBehaviour
         {
 
             movement = Input.GetAxisRaw("Horizontal");
-            animator.speed = Mathf.Abs(movement);
-            
+            if (movement < -0.1 || movement > 0.1)
+                animator.SetBool("moving", true);
+            else
+                animator.SetBool("moving", false);
+
             rb.velocity = new Vector2(movement * movementVelocity, rb.velocity.y);
 
             Debug.Log(movement + "-" + animator.speed + "-" + rb.velocity);
