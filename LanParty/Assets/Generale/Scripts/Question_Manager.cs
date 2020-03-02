@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dialog_Manager : MonoBehaviour
+public class Question_Manager : MonoBehaviour
 {
     public GameObject sentencePreFab;
     public GameObject questionPreFab;
@@ -25,7 +25,7 @@ public class Dialog_Manager : MonoBehaviour
     {
         level.stopped = true;
 
-        popUp = Instantiate(sentencePreFab) as GameObject;
+        popUp = Instantiate(questionPreFab) as GameObject;
 
 
         texts = popUp.GetComponentsInChildren<Text>();
@@ -94,5 +94,5 @@ public class Dialog_Manager : MonoBehaviour
             level.stopped = true;
     }
 
-    
+
 }

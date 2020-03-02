@@ -37,7 +37,6 @@ public class Player_interaction : MonoBehaviour
 
     void Update()
     {
-
         if (entity != null)
         {
             if (entity.name.StartsWith("NPC") && Input.GetKeyDown(KeyCode.E))
