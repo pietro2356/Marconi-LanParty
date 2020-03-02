@@ -66,6 +66,12 @@ public class Player_movement : MonoBehaviour
             else if(movement != 0)
                 facingRight = false;
 
+            if (facingRight)
+                transform.localScale = new Vector3(-1, 1, 1);
+            else
+                transform.localScale = new Vector3(1, 1, 1);
+
+
             if (Input.GetKeyDown(KeyCode.W) && isGrounded())
                 rb.velocity = Vector2.up * jumpForce;
 
