@@ -8,6 +8,8 @@ public class Player_movement : MonoBehaviour
     CircleCollider2D circleCollider;
     Scene_manager level;
     Dialog_Manager dm;
+    Animator animator;
+
     private float movement = 0f;
     [SerializeField] private LayerMask layer;
     private float originalGravity,
@@ -21,6 +23,7 @@ public class Player_movement : MonoBehaviour
 
     public bool onLadder = false,
         facingRight;
+
         
 
     private bool isGrounded()
@@ -38,20 +41,36 @@ public class Player_movement : MonoBehaviour
         originalGravity = rb.gravityScale;
         level = FindObjectOfType<Scene_manager>();
         dm = FindObjectOfType<Dialog_Manager>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (!level.stopped)
         {
+
             movement = Input.GetAxisRaw("Horizontal");
+            if (movement < -0.1 || movement > 0.1)
+                animator.SetBool("moving", true);
+            else
+                animator.SetBool("moving", false);
+
             rb.velocity = new Vector2(movement * movementVelocity, rb.velocity.y);
+
+            Debug.Log(movement + "-" + animator.speed + "-" + rb.velocity);
 
             if (movement > 0)
                 facingRight = true;
             else if(movement != 0)
                 facingRight = false;
+
+            if (facingRight)
+                transform.localScale = new Vector3(-1, 1, 1);
+            else
+                transform.localScale = new Vector3(1, 1, 1);
+
 
             if (Input.GetKeyDown(KeyCode.W) && isGrounded())
                 rb.velocity = Vector2.up * jumpForce;
