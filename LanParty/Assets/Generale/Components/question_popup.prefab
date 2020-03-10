@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 8843173077577174115}
   - component: {fileID: 1999848878975031642}
   - component: {fileID: 276009402441313051}
+  - component: {fileID: 8635031236140762709}
   m_Layer: 5
-  m_Name: Button4
+  m_Name: btnDomanda4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +118,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1999848878975031642}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8635031236140762709}
+        m_MethodName: Risposta
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8635031236140762709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491125985259625065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5491609a81734428e06fd26eba4384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5759301006457961134
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +154,7 @@ GameObject:
   - component: {fileID: 8293200891018765827}
   - component: {fileID: 1021393715933907237}
   m_Layer: 5
-  m_Name: Text
+  m_Name: txtOpzione4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +218,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: txtOpzione4
 --- !u!1 &6197664681552294835
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,8 +231,9 @@ GameObject:
   - component: {fileID: 7446876348097551590}
   - component: {fileID: 3853599455525973350}
   - component: {fileID: 4525031776405923006}
+  - component: {fileID: 8450607697316298028}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: btnDomanda1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +337,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3853599455525973350}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8450607697316298028}
+        m_MethodName: Risposta
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8450607697316298028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197664681552294835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5491609a81734428e06fd26eba4384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7061023039572203566
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +373,7 @@ GameObject:
   - component: {fileID: 7061023039572203561}
   - component: {fileID: 7061023039572203560}
   m_Layer: 5
-  m_Name: Text_name
+  m_Name: txtDomanda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,7 +437,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'txtDomanda
+
+'
 --- !u!1 &7061023039828126520
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +629,7 @@ GameObject:
   - component: {fileID: 391870923840143803}
   - component: {fileID: 4184976405767760444}
   m_Layer: 5
-  m_Name: Text
+  m_Name: txtOpzione3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,7 +693,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: txtOpzione3
 --- !u!1 &7559825868257549924
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,8 +706,9 @@ GameObject:
   - component: {fileID: 67683574512886878}
   - component: {fileID: 3893074076518566281}
   - component: {fileID: 321499484655336471}
+  - component: {fileID: 7519598168742372244}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: btnDomanda2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,7 +812,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3893074076518566281}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7519598168742372244}
+        m_MethodName: Risposta
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7519598168742372244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559825868257549924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5491609a81734428e06fd26eba4384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7962304507429741047
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +848,7 @@ GameObject:
   - component: {fileID: 1357658911730715874}
   - component: {fileID: 5245133062525000198}
   m_Layer: 5
-  m_Name: Text
+  m_Name: txtOpzione1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,7 +912,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: txtOpzione1
 --- !u!1 &8290273010774056712
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +925,7 @@ GameObject:
   - component: {fileID: 2907958155531756757}
   - component: {fileID: 533850871255241175}
   m_Layer: 5
-  m_Name: Text
+  m_Name: txtOpzione2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,7 +989,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: txtOpzione2
 --- !u!1 &8416159924140457318
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,8 +1002,9 @@ GameObject:
   - component: {fileID: 1913092855999499243}
   - component: {fileID: 27264710481359771}
   - component: {fileID: 7532482092365508900}
+  - component: {fileID: 5131325880821955372}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: btnDomanda3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1033,4 +1108,27 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 27264710481359771}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5131325880821955372}
+        m_MethodName: Risposta
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5131325880821955372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416159924140457318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5491609a81734428e06fd26eba4384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

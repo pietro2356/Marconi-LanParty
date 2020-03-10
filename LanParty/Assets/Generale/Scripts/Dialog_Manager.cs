@@ -15,11 +15,17 @@ public class Dialog_Manager : MonoBehaviour
     private Text[] texts;
     private Scene_manager level;
 
+    private Domanda domanda;
+    private GestoreComunicazione gestoreComunicazione;
+    private Text[] datiForm;
+    private GameObject popUpDomande;
 
     void Start()
     {
         sentences = new Queue<string>();
         level = FindObjectOfType<Scene_manager>();
+
+        gestoreComunicazione = FindObjectOfType<GestoreComunicazione>();
     }
 
     public void StartDialogue(string[] dialogue)
@@ -59,8 +65,6 @@ public class Dialog_Manager : MonoBehaviour
         if (sentence.StartsWith("_Q"))
         {
             GameObject qPopUp = Instantiate(questionPreFab) as GameObject;
-
-
         }
         else
         {
@@ -89,11 +93,35 @@ public class Dialog_Manager : MonoBehaviour
             return -1;
     }
 
+    public void RichiestaDomanda()
+    {
+        level.stopped = true;
+
+        popUpDomande = Instantiate(questionPreFab) as GameObject;
+
+        domanda = gestoreComunicazione.RichiediDomanda();
+
+        datiForm = popUp.GetComponentsInChildren<Text>();
+
+        datiForm[0].text = domanda.Testo;
+
+        datiForm[1].text = domanda.Risposta1;
+        datiForm[2].text = domanda.Risposta2;
+        datiForm[3].text = domanda.Risposta3;
+        datiForm[4].text = domanda.Risposta4;
+    }
+
+    public void Risposta(int numeroRisposta)
+    {
+        gestoreComunicazione.RispostaDomanda(numeroRisposta);
+        level.stopped = false;
+        Destroy(popUpDomande);
+        Debug.Log("Risposta iniviata --> "+numeroRisposta);
+    }
+
     void Update()
     {
         if (inDialog)
             level.stopped = true;
     }
-
-    
 }
