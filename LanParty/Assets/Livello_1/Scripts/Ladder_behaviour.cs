@@ -15,7 +15,7 @@ public class Ladder_behaviour : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Player")
+        if (other.tag == "Player")
         {
             player.onLadder = true;
             Debug.Log("test");
@@ -24,7 +24,7 @@ public class Ladder_behaviour : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.name == "Player")
+        if (other.tag == "Player")
             player.onLadder = false;
     }
 }
