@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Gestore_Timer : MonoBehaviour
 {
     public Text testoTimer;
+    public MonoBehaviour gestore;
 
     public int orarioPartenza;
     bool attivo = false;
@@ -25,7 +26,19 @@ public class Gestore_Timer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (attivo && GestioneGriglia.istanza.giocoAttivo)
+        bool attivo = false;
+
+        if (gestore is GestioneGriglia)
+        {
+            attivo = (gestore as GestioneGriglia).giocoAttivo;
+        }
+
+        if (gestore is GestioneGriglia_palline)
+        {
+            attivo = (gestore as GestioneGriglia_palline).giocoAttivo;
+        }
+
+        if (attivo)
         {
             orarioPartenza++;
             int secondi = orarioPartenza % 60;
@@ -36,11 +49,12 @@ public class Gestore_Timer : MonoBehaviour
             {
                 sec = "0" + secondi;
             }
-            if (minuti<10)
+            if (minuti < 10)
             {
                 min = "0" + minuti;
             }
             testoTimer.text = min + ":" + sec;
         }
+
     }
 }

@@ -1,13 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GestioneGriglia : MonoBehaviour
+public class GestioneGriglia_palline : MonoBehaviour
 {
-    const byte DIM_X = 11, DIM_Y = 6;
+    const byte DIM_X = 6, DIM_Y = 4;
     const byte maxPunti = 50;
 
     SpriteRenderer g_renderer;
@@ -28,7 +28,7 @@ public class GestioneGriglia : MonoBehaviour
         set { celleGriglia = value; }
     }
 
-    public static GestioneGriglia istanza;
+    public static GestioneGriglia_palline istanza;
 
     public GameObject pannelloIntermedio;
     public GameObject pannelloFine;
@@ -62,9 +62,9 @@ public class GestioneGriglia : MonoBehaviour
 
     void inizio()
     {
-        modelloUsato = (byte)random.Next(1, Modelli.modelli.Length);
+        modelloUsato = (byte)random.Next(0, Modelli_palline.modelli.Length);
 
-        GeneraPezzi(Modelli.modelli[modelloUsato].Schema);
+        GeneraPezzi(Modelli_palline.modelli[modelloUsato].Schema);
 
         giocoAttivo = true;
 
@@ -84,7 +84,7 @@ public class GestioneGriglia : MonoBehaviour
         }
         griglia = new Tubi[DIM_X, DIM_Y];
 
-        Vector3 dimScacchiera = g_renderer.size;
+        Vector3 dimScacchiera = g_renderer.size * g_renderer.transform.localScale;
 
         Vector2 dimCella = new Vector2((dimScacchiera.x - 0.06f) / DIM_X, (dimScacchiera.y - 0.06f) / DIM_Y);
 
@@ -113,7 +113,6 @@ public class GestioneGriglia : MonoBehaviour
         {
             Destroy(cella.pezzoInterno);
             cella.pezzoInterno = null;
-            cella.pezzoInterno = null;
         }
 
         for (int x = 0; x < DIM_X; x++)
@@ -128,13 +127,7 @@ public class GestioneGriglia : MonoBehaviour
                     GameObject pezzo = Instantiate(pezzi[disposizione[x, y]], new Vector3(puntoSpawn.x, puntoSpawn.y, g_transform.position.z - 1), Quaternion.identity);
 
                     griglia[x, y] = new Tubi(x, y, 0, (tipoPezzo)disposizione[x, y], pezzo);
-                    pezzo.GetComponent<Gestore_pezzo>().questo = griglia[x, y];
-
-                    byte rotazioni = (byte)random.Next(0, 4);
-                    for (int i = 0; i < rotazioni; i++)
-                    {
-                        pezzo.GetComponent<Gestore_pezzo>().Ruota(); ;
-                    }
+                    pezzo.GetComponent<GestionePallina>().questo = griglia[x, y];
 
                     cellaDaTrovare.pezzoInterno = pezzo;
 
@@ -190,12 +183,12 @@ public class GestioneGriglia : MonoBehaviour
         {
             for (int y = 0; y < DIM_Y; y++)
             {
-                if (griglia[x,y] != null)
+                if (griglia[x, y] != null)
                 {
                     if (Modelli.modelli[modelloUsato].Soluzione[x, y] == -1)
                     {
                     }
-                    else if (griglia[x,y].tipoTubo == tipoPezzo.dritto)
+                    else if (griglia[x, y].tipoTubo == tipoPezzo.dritto)
                     {
                         if (griglia[x, y].gradi != Modelli.modelli[modelloUsato].Soluzione[x, y] && griglia[x, y].gradi + 180 != Modelli.modelli[modelloUsato].Soluzione[x, y] && griglia[x, y].gradi - 180 != Modelli.modelli[modelloUsato].Soluzione[x, y])
                         {
@@ -226,21 +219,15 @@ public class GestioneGriglia : MonoBehaviour
     }
 }
 
-public struct Coordinate_scacchiera
-{
-    public byte orizzontale;
-    public byte verticale;
-}
 
-
-public class InfoCelle
+public class InfoCelle_palline
 {
     public Coordinate_scacchiera coordinate;
     public GameObject pezzoInterno;
     public Vector3 posCella;
     public tipoPezzo tipoPezzo;
 
-    public InfoCelle(byte orizzontale, byte verticale, Vector3 pos, GameObject pezzo = null, tipoPezzo tipo = tipoPezzo.vuoto)
+    public InfoCelle_palline(byte orizzontale, byte verticale, Vector3 pos, GameObject pezzo = null, tipoPezzo tipo = tipoPezzo.vuoto)
     {
         coordinate.orizzontale = orizzontale;
         coordinate.verticale = verticale;
@@ -249,3 +236,4 @@ public class InfoCelle
         tipoPezzo = tipo;
     }
 }
+
