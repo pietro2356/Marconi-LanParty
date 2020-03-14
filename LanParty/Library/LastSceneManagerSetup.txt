@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Gestore/scenaIniziale.unity
+- path: Assets/minigioco/Gioco_Palline.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
