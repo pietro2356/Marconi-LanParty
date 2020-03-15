@@ -16,8 +16,6 @@ public class GestioneGriglia_palline : MonoBehaviour
     [NonSerialized]
     public Vector2 dimCella;
 
-    public Tubi[,] griglia = new Tubi[DIM_X, DIM_Y];
-
     static List<InfoCelle_palline> celleGriglia;
 
     public List<GameObject> pezzi = new List<GameObject>();
@@ -83,14 +81,6 @@ public class GestioneGriglia_palline : MonoBehaviour
     void SetupGriglia()
     {
         celleGriglia.Clear();
-        foreach (var pezzo in griglia)
-        {
-            if (pezzo != null)
-            {
-                Destroy(pezzo.tubo);
-            }
-        }
-        griglia = new Tubi[DIM_X, DIM_Y];
 
         Vector3 dimScacchiera = g_renderer.size * g_renderer.transform.localScale;
 
@@ -163,8 +153,6 @@ public class GestioneGriglia_palline : MonoBehaviour
                     pezzo.GetComponent<GestionePallina>().posizione = new Coordinate_scacchiera(x, y);
 
                     cellaDaTrovare.pezzoInterno = pezzo;
-
-                    cellaDaTrovare.tipoPezzo = (tipoPezzo)disposizione[x, y];
                 }
 
             }
@@ -212,33 +200,33 @@ public class GestioneGriglia_palline : MonoBehaviour
 
     public bool controllaPercorso()
     {
+        int i = 0;
+        byte col = 0;
         for (int x = 0; x < DIM_X; x++)
         {
             for (int y = 0; y < DIM_Y; y++)
             {
-                if (griglia[x, y] != null)
+                byte buffer = 0;
+                try
                 {
-                    if (Modelli.modelli[modelloUsato].Soluzione[x, y] == -1)
+                    buffer = celleGriglia[i].pezzoInterno.GetComponent<GestionePallina>().colore;
+                }
+                catch (Exception)
+                {
+                }
+
+                if (y == 0)
+                {
+                    col = buffer;
+                }
+                else
+                {
+                    if (col != buffer)
                     {
-                    }
-                    else if (griglia[x, y].tipoTubo == tipoPezzo.dritto)
-                    {
-                        if (griglia[x, y].gradi != Modelli.modelli[modelloUsato].Soluzione[x, y] && griglia[x, y].gradi + 180 != Modelli.modelli[modelloUsato].Soluzione[x, y] && griglia[x, y].gradi - 180 != Modelli.modelli[modelloUsato].Soluzione[x, y])
-                        {
-                            return false;
-                        }
-                    }
-                    else if (griglia[x, y].tipoTubo == tipoPezzo.quatroUscite)
-                    {
-                    }
-                    else
-                    {
-                        if (griglia[x, y].gradi != Modelli.modelli[modelloUsato].Soluzione[x, y])
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                 }
+                i++;
             }
         }
         return true;
@@ -282,13 +270,14 @@ public class GestioneGriglia_palline : MonoBehaviour
 
     public void InserisciPallina(byte pos)
     {
-        GameObject pallina = GetInfoCelle(pallinaSelezionata.posizione.orizzontale, pallinaSelezionata.posizione.verticale).pezzoInterno;
+        GameObject pallina = pallinaSelezionata.gameObject;
 
-        if (pos == pallinaSelezionata.GetComponent<GestionePallina>().posizione.orizzontale)
+        if (pos == pallinaSelezionata.posizione.orizzontale)
         {
-            pallina.transform.position = GetInfoCelle(pos, pallinaSelezionata.GetComponent<GestionePallina>().posizione.verticale).posCella;
+            pallina.transform.position = GetInfoCelle(pos, pallinaSelezionata.posizione.verticale).posCella;
             pallinaSelezionata = null;
             DisabilitaColonne();
+            return;
         }
 
         byte max = 20;
@@ -308,18 +297,21 @@ public class GestioneGriglia_palline : MonoBehaviour
             return;
         }
 
-        if (max != 0 && GetInfoCelle(pos, (byte)(max - 1)).pezzoInterno.GetComponent<GestionePallina>().colore != pallina.GetComponent<GestionePallina>().colore)
+        if (max != 0 && GetInfoCelle(pos, (byte)(max - 1)).pezzoInterno.GetComponent<GestionePallina>().colore != pallinaSelezionata.colore)
         {
             return;
         }
 
         GetInfoCelle(pallinaSelezionata.posizione.orizzontale, pallinaSelezionata.posizione.verticale).pezzoInterno = null;
-        GetInfoCelle(pos, max).pezzoInterno = pallina;
-        pallina.transform.position = GetInfoCelle(pos, max).posCella;
+        InfoCelle_palline des = GetInfoCelle(pos, max);
+        des.pezzoInterno = pallina;
+        pallina.transform.position = des.posCella + new Vector3(0,0, -1);
 
         pallinaSelezionata = null;
 
         DisabilitaColonne();
+
+        ControllaVincita();
     }
 }
 
@@ -329,15 +321,13 @@ public class InfoCelle_palline
     public Coordinate_scacchiera coordinate;
     public GameObject pezzoInterno;
     public Vector3 posCella;
-    public tipoPezzo tipoPezzo;
 
-    public InfoCelle_palline(byte orizzontale, byte verticale, Vector3 pos, GameObject pezzo = null, tipoPezzo tipo = tipoPezzo.vuoto)
+    public InfoCelle_palline(byte orizzontale, byte verticale, Vector3 pos, GameObject pezzo = null)
     {
         coordinate.orizzontale = orizzontale;
         coordinate.verticale = verticale;
         pezzoInterno = pezzo;
         posCella = pos;
-        tipoPezzo = tipo;
     }
 }
 

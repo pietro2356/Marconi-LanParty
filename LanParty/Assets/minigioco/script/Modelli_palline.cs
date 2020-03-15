@@ -14,6 +14,16 @@ public static class Modelli_palline
         { 0, 0, 0, 0 },
     };
 
+    private static byte[,] base1 = new byte[,]
+    {
+        { 1, 1, 1, 1 },
+        { 2, 2, 2, 2 },
+        { 3, 3, 3, 3 },
+        { 4, 4, 0, 0 },
+        { 4, 4, 0, 0 },
+        { 0, 0, 0, 0 },
+    };
+
     public static modello_palline[] modelli = new modello_palline[] { new modello_palline(base0)};
 }
 
