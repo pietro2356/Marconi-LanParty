@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2107213947569186377, guid: 91a6c908ef86acd41ab33b4f75006d40,
+        type: 3}
+      propertyPath: colore
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6865931506571854802, guid: 91a6c908ef86acd41ab33b4f75006d40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -80,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 6865931506571854806, guid: 91a6c908ef86acd41ab33b4f75006d40,
         type: 3}
       propertyPath: m_Name
-      value: pallina
+      value: pallina_gialla
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91a6c908ef86acd41ab33b4f75006d40, type: 3}

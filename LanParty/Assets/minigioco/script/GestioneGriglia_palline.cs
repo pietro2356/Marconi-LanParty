@@ -18,15 +18,21 @@ public class GestioneGriglia_palline : MonoBehaviour
 
     public Tubi[,] griglia = new Tubi[DIM_X, DIM_Y];
 
-    static List<InfoCelle> celleGriglia;
+    static List<InfoCelle_palline> celleGriglia;
 
     public List<GameObject> pezzi = new List<GameObject>();
 
-    public static List<InfoCelle> CelleGriglia
+    public static List<InfoCelle_palline> CelleGriglia
     {
         get { return celleGriglia; }
         set { celleGriglia = value; }
     }
+
+    public GameObject colonna;
+    [NonSerialized]
+    public List<GameObject> colonne = new List<GameObject>();
+
+    public GestionePallina pallinaSelezionata;
 
     public static GestioneGriglia_palline istanza;
 
@@ -51,11 +57,13 @@ public class GestioneGriglia_palline : MonoBehaviour
         g_renderer = GetComponent<SpriteRenderer>();
         g_transform = transform;
 
-        celleGriglia = new List<InfoCelle>();
+        celleGriglia = new List<InfoCelle_palline>();
 
         SetupGriglia();
 
         istanza = this;
+
+        SetupColonne();
 
         inizio();
     }
@@ -100,10 +108,36 @@ public class GestioneGriglia_palline : MonoBehaviour
                 byte verticale = (byte)j;
                 Vector3 posCella = new Vector3(posStart.x + (dimCella.x * i), posStart.y + (dimCella.y * j));
 
-                InfoCelle cella = new InfoCelle(orizzontale, verticale, posCella);
+                InfoCelle_palline cella = new InfoCelle_palline(orizzontale, verticale, posCella);
 
                 CelleGriglia.Add(cella);
             }
+        }
+    }
+
+    void SetupColonne()
+    {
+        foreach (var col in colonne)
+        {
+            Destroy(col);
+        }
+        colonne.Clear();
+
+        Vector3 dimScacchiera = g_renderer.size * g_renderer.transform.localScale;
+        Vector2 dimColonna = new Vector2((dimScacchiera.x - 0.06f) / DIM_X, 0);
+        Vector3 posIniziale = new Vector3((g_transform.position.x - ((dimScacchiera.x - 0.06f) / 2)) + (dimColonna.x / 2), 0);
+
+        for (byte i = 0; i < DIM_X; i++)
+        {
+
+            byte orizzontale = i;
+            Vector3 posCella = new Vector3(posIniziale.x + (dimCella.x * i), transform.position.y);
+
+            GameObject pezzo = Instantiate(colonna, new Vector3(posCella.x, posCella.y, g_transform.position.z - 2), Quaternion.identity);
+
+            pezzo.GetComponent<Gestione_colonne>().posizione = i;
+
+            colonne.Add(pezzo);
         }
     }
 
@@ -115,19 +149,18 @@ public class GestioneGriglia_palline : MonoBehaviour
             cella.pezzoInterno = null;
         }
 
-        for (int x = 0; x < DIM_X; x++)
+        for (byte x = 0; x < DIM_X; x++)
         {
-            for (int y = 0; y < DIM_Y; y++)
+            for (byte y = 0; y < DIM_Y; y++)
             {
                 if (disposizione[x, y] != 0)
                 {
-                    InfoCelle cellaDaTrovare = GetInfoCelle((byte)x, (byte)y);
+                    InfoCelle_palline cellaDaTrovare = GetInfoCelle(x, y);
                     Vector3 puntoSpawn = cellaDaTrovare.posCella;
 
                     GameObject pezzo = Instantiate(pezzi[disposizione[x, y]], new Vector3(puntoSpawn.x, puntoSpawn.y, g_transform.position.z - 1), Quaternion.identity);
 
-                    griglia[x, y] = new Tubi(x, y, 0, (tipoPezzo)disposizione[x, y], pezzo);
-                    pezzo.GetComponent<GestionePallina>().questo = griglia[x, y];
+                    pezzo.GetComponent<GestionePallina>().posizione = new Coordinate_scacchiera(x, y);
 
                     cellaDaTrovare.pezzoInterno = pezzo;
 
@@ -138,11 +171,11 @@ public class GestioneGriglia_palline : MonoBehaviour
         }
     }
 
-    public static InfoCelle GetInfoCelle(byte x, byte y)
+    public static InfoCelle_palline GetInfoCelle(byte x, byte y)
     {
-        List<InfoCelle> Linea = celleGriglia.FindAll(a => a.coordinate.orizzontale == x);
+        List<InfoCelle_palline> Linea = celleGriglia.FindAll(a => a.coordinate.orizzontale == x);
 
-        InfoCelle cella = Linea.Find(b => b.coordinate.verticale == y);
+        InfoCelle_palline cella = Linea.Find(b => b.coordinate.verticale == y);
 
         return cella;
     }
@@ -216,6 +249,77 @@ public class GestioneGriglia_palline : MonoBehaviour
         pannelloIntermedio.SetActive(false);
         schema++;
         inizio();
+    }
+
+    public bool isSopra(Coordinate_scacchiera coordinate)
+    {
+        for (byte i = (byte)(coordinate.verticale + 1); i < DIM_Y; i++)
+        {
+            InfoCelle_palline cella = GetInfoCelle(coordinate.orizzontale, i);
+            if (cella.pezzoInterno != null)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void AbilitaColonne()
+    {
+        foreach (var col in colonne)
+        {
+            col.SetActive(true);
+        }
+    }
+
+    public void DisabilitaColonne()
+    {
+        foreach (var col in colonne)
+        {
+            col.SetActive(false);
+        }
+    }
+
+    public void InserisciPallina(byte pos)
+    {
+        GameObject pallina = GetInfoCelle(pallinaSelezionata.posizione.orizzontale, pallinaSelezionata.posizione.verticale).pezzoInterno;
+
+        if (pos == pallinaSelezionata.GetComponent<GestionePallina>().posizione.orizzontale)
+        {
+            pallina.transform.position = GetInfoCelle(pos, pallinaSelezionata.GetComponent<GestionePallina>().posizione.verticale).posCella;
+            pallinaSelezionata = null;
+            DisabilitaColonne();
+        }
+
+        byte max = 20;
+
+        for (byte i = 0; i < DIM_Y; i++)
+        {
+            InfoCelle_palline cella = GetInfoCelle(pos, i);
+            if (cella.pezzoInterno == null)
+            {
+                max = i;
+                break;
+            }
+        }
+
+        if (max == 20)
+        {
+            return;
+        }
+
+        if (max != 0 && GetInfoCelle(pos, (byte)(max - 1)).pezzoInterno.GetComponent<GestionePallina>().colore != pallina.GetComponent<GestionePallina>().colore)
+        {
+            return;
+        }
+
+        GetInfoCelle(pallinaSelezionata.posizione.orizzontale, pallinaSelezionata.posizione.verticale).pezzoInterno = null;
+        GetInfoCelle(pos, max).pezzoInterno = pallina;
+        pallina.transform.position = GetInfoCelle(pos, max).posCella;
+
+        pallinaSelezionata = null;
+
+        DisabilitaColonne();
     }
 }
 

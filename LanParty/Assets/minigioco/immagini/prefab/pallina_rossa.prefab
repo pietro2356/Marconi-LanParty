@@ -7,10 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2462191226204191541, guid: 5ac9246ed951f0445aa6289385bf0b99,
+        type: 3}
+      propertyPath: colore
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6943871572571004586, guid: 5ac9246ed951f0445aa6289385bf0b99,
         type: 3}
       propertyPath: m_Name
-      value: TuboDritto
+      value: pallina_rossa
       objectReference: {fileID: 0}
     - target: {fileID: 6943871572571004590, guid: 5ac9246ed951f0445aa6289385bf0b99,
         type: 3}

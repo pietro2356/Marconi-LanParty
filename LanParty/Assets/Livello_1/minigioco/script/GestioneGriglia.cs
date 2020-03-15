@@ -230,6 +230,12 @@ public struct Coordinate_scacchiera
 {
     public byte orizzontale;
     public byte verticale;
+
+    public Coordinate_scacchiera(byte orizzontale, byte verticale)
+    {
+        this.orizzontale = orizzontale;
+        this.verticale = verticale;
+    }
 }
 
 

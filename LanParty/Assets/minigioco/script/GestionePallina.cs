@@ -5,14 +5,20 @@ using UnityEngine;
 
 public class GestionePallina : MonoBehaviour
 {
-    public Tubi questo;
+    public Coordinate_scacchiera posizione;
+    public byte colore;
 
     void OnMouseDown()
     {
+        Debug.Log("pallina" +posizione.orizzontale + posizione.verticale);
         if (true)//GestioneGriglia.istanza.giocoAttivo)
         {
-            Seleziona();
-            GestioneGriglia.istanza.ControllaVincita();
+            if (GestioneGriglia_palline.istanza.isSopra(posizione))
+            {
+                Seleziona();
+                GestioneGriglia_palline.istanza.pallinaSelezionata = this;
+                GestioneGriglia_palline.istanza.AbilitaColonne();
+            }
         }
     }
 
