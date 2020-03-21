@@ -181,7 +181,12 @@ public class GestioneGriglia_palline : MonoBehaviour
             {
                 pannelloFine.SetActive(true);
                 ScrittaTempo.GetComponent<Text>().text = timer.GetComponent<Gestore_Timer>().testoTimer.text;
-                int punteggio = (int)(((float)timer.GetComponent<Gestore_Timer>().orarioPartenza / (float)200) * (float)maxPunti);
+                float tempo = timer.GetComponent<Gestore_Timer>().orarioPartenza - 30;
+                if (tempo < 0)
+                {
+                    tempo = 0;
+                }
+                int punteggio = (int)((tempo / (float)150) * (float)maxPunti);
                 punteggio = maxPunti - punteggio;
                 if (punteggio < 0)
                 {
@@ -277,6 +282,7 @@ public class GestioneGriglia_palline : MonoBehaviour
             pallina.transform.position = GetInfoCelle(pos, pallinaSelezionata.posizione.verticale).posCella;
             pallinaSelezionata = null;
             DisabilitaColonne();
+            stampaMatrice();
             return;
         }
 
@@ -306,12 +312,41 @@ public class GestioneGriglia_palline : MonoBehaviour
         InfoCelle_palline des = GetInfoCelle(pos, max);
         des.pezzoInterno = pallina;
         pallina.transform.position = des.posCella + new Vector3(0,0, -1);
+        pallinaSelezionata.posizione.orizzontale = pos;
+        pallinaSelezionata.posizione.verticale = max;
 
         pallinaSelezionata = null;
 
         DisabilitaColonne();
 
+        stampaMatrice();
+
         ControllaVincita();
+    }
+
+    void stampaMatrice()
+    {
+        string ciao = "";
+        int c = 0;
+        for (int i = 0; i < DIM_X; i++)
+        {
+            
+            for (int j = 0; j < DIM_Y; j++)
+            {
+                if (CelleGriglia[c].pezzoInterno == null)
+                {
+                    ciao += 0;
+                }
+                else
+                {
+                    ciao += CelleGriglia[c].pezzoInterno.GetComponent<GestionePallina>().colore;
+                }
+                c++;
+                ciao += " ";
+            }
+            ciao += "\n";
+        }
+        Debug.Log(ciao);
     }
 }
 

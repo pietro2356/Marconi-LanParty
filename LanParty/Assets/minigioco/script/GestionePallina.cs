@@ -10,7 +10,7 @@ public class GestionePallina : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("pallina" +posizione.orizzontale + posizione.verticale);
+        //Debug.Log("pallina" +posizione.orizzontale + posizione.verticale);
         if (true)//GestioneGriglia.istanza.giocoAttivo)
         {
             if (GestioneGriglia_palline.istanza.isSopra(posizione))

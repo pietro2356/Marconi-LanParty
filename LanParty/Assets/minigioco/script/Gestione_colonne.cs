@@ -8,7 +8,7 @@ public class Gestione_colonne : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("rettangolo " + posizione);
+        //Debug.Log("rettangolo " + posizione);
         GestioneGriglia_palline.istanza.InserisciPallina(posizione);
     }
 }

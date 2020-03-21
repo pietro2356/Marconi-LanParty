@@ -167,7 +167,12 @@ public class GestioneGriglia : MonoBehaviour
             {
                 pannelloFine.SetActive(true);
                 ScrittaTempo.GetComponent<Text>().text = timer.GetComponent<Gestore_Timer>().testoTimer.text;
-                int punteggio = (int)(((float)timer.GetComponent<Gestore_Timer>().orarioPartenza / (float)200) * (float)maxPunti);
+                float tempo = timer.GetComponent<Gestore_Timer>().orarioPartenza - 30;
+                if (tempo < 0)
+                {
+                    tempo = 0;
+                }
+                int punteggio = (int)((tempo / (float)150) * (float)maxPunti);
                 punteggio = maxPunti - punteggio;
                 if (punteggio < 0)
                 {
