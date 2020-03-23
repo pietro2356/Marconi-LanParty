@@ -279,10 +279,9 @@ public class GestioneGriglia_palline : MonoBehaviour
 
         if (pos == pallinaSelezionata.posizione.orizzontale)
         {
-            pallina.transform.position = GetInfoCelle(pos, pallinaSelezionata.posizione.verticale).posCella;
+            pallinaSelezionata.Torna( GetInfoCelle(pos, pallinaSelezionata.posizione.verticale).posCella);
             pallinaSelezionata = null;
             DisabilitaColonne();
-            stampaMatrice();
             return;
         }
 
@@ -310,16 +309,16 @@ public class GestioneGriglia_palline : MonoBehaviour
 
         GetInfoCelle(pallinaSelezionata.posizione.orizzontale, pallinaSelezionata.posizione.verticale).pezzoInterno = null;
         InfoCelle_palline des = GetInfoCelle(pos, max);
-        des.pezzoInterno = pallina;
-        pallina.transform.position = des.posCella + new Vector3(0,0, -1);
         pallinaSelezionata.posizione.orizzontale = pos;
         pallinaSelezionata.posizione.verticale = max;
+        des.pezzoInterno = pallina;
+
+        pallinaSelezionata.VaiA(des.posCella + new Vector3(0,0, -1));
+        
 
         pallinaSelezionata = null;
 
         DisabilitaColonne();
-
-        stampaMatrice();
 
         ControllaVincita();
     }
