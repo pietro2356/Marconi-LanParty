@@ -13,6 +13,7 @@ public class GestioneRisposte : MonoBehaviour
 
     public void Risposta(int risposta)
     {
+        Debug.Log(risposta);
         DM.Risposta(risposta);
     }
 }

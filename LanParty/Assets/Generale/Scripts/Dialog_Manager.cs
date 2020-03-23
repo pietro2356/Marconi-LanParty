@@ -83,6 +83,8 @@ public class Dialog_Manager : MonoBehaviour
         level.stopped = false;
         Destroy(popUp);
         Debug.Log("conversation ended");
+
+        RichiestaDomanda();
     }
 
     public int GetSentenceNumber()
@@ -101,7 +103,7 @@ public class Dialog_Manager : MonoBehaviour
 
         domanda = gestoreComunicazione.RichiediDomanda();
 
-        datiForm = popUp.GetComponentsInChildren<Text>();
+        datiForm = popUpDomande.GetComponentsInChildren<Text>();
 
         datiForm[0].text = domanda.Testo;
 
