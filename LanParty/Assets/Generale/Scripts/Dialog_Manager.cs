@@ -83,8 +83,6 @@ public class Dialog_Manager : MonoBehaviour
         level.stopped = false;
         Destroy(popUp);
         Debug.Log("conversation ended");
-
-        RichiestaDomanda();
     }
 
     public int GetSentenceNumber()
