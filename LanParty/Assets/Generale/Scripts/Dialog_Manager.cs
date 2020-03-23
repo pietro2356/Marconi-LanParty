@@ -118,7 +118,7 @@ public class Dialog_Manager : MonoBehaviour
         gestoreComunicazione.RispostaDomanda(numeroRisposta);
         level.stopped = false;
         Destroy(popUpDomande);
-        Debug.Log("Risposta iniviata --> "+numeroRisposta);
+        Debug.Log("Risposta iniviata --> " + numeroRisposta);
     }
 
     void Update()

@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GestioneRisposte : MonoBehaviour
 {
-    private Dialog_Manager DM;
+    public Dialog_Manager DM;
 
     void Start()
     {
-        DM = GetComponent<Dialog_Manager>();
+        DM = FindObjectOfType<Dialog_Manager>();
     }
 
     public void Risposta(int risposta)
